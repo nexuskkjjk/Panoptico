@@ -122,9 +122,9 @@ export default function App() {
   }, [loading, currentPage]);
 
   const renderHome = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16">
+    <main className="pt-24 pb-32 px-6 md:px-16">
       {/* Project List */}
-      <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-64">
+      <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-32">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
@@ -194,7 +194,7 @@ export default function App() {
   );
 
   const renderAbout = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16 min-h-screen flex items-start justify-start">
+    <main className="pt-24 pb-32 px-6 md:px-16 min-h-screen flex items-start justify-start">
       <motion.section 
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
@@ -227,7 +227,7 @@ export default function App() {
   );
 
   const renderContact = () => (
-    <main className="pt-64 pb-32 px-6 md:px-16 min-h-screen flex items-start justify-start">
+    <main className="pt-32 pb-32 px-6 md:px-16 min-h-screen flex items-start justify-start">
       <motion.section 
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
