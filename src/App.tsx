@@ -7,38 +7,69 @@ import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import { Github, Twitter, Instagram, Mail } from "lucide-react";
 
-const projects = [
+const projects: Array<{
+  id: string;
+  title: string;
+  category: string;
+  vimeoId?: string;
+  vimeoHash?: string;
+  video?: string;
+  thumbnail: string;
+  description: string;
+}> = [
   {
     id: "p1",
-    title: "OUTRO LUGAR — L7NNON",
+    title: "MC CABELINHO FT. VINICIN — TERMINEI RECENTEMENTE",
     category: "VIDEOCLIPE",
-    vimeoId: "675329933",
-    thumbnail: "https://vumbnail.com/675329933_1280.jpg",
-    description: "UM MERGULHO VISUAL NA ESTÉTICA URBANA DO RIO DE JANEIRO. ESTE VIDEOCLIPE EXPLORA A DUALIDADE ENTRE O CAOS E A POESIA DAS RUAS, UTILIZANDO LINGUAGEM CINEMATOGRÁFICA PARA TRADUZIR A LÍRICA DE L7NNON. DIREÇÃO DE FOTOGRAFIA FOCADA EM LUZ NATURAL E MOVIMENTOS ORGÂNICOS.",
+    vimeoId: "1041871186",
+    vimeoHash: "f449db2df9",
+    thumbnail: "https://i.vimeocdn.com/video/2124668721-caff6e5a830a5c6a0fe35fada2f292db53b20aa3b2e0a608c3bb68c4199cf7fb-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
   {
     id: "p2",
-    title: "FRAGMENTOS DO TEMPO",
-    category: "DOCUMENTÁRIO",
-    video: "https://assets.mixkit.co/videos/preview/mixkit-abstract-flowing-lines-of-light-22-large.mp4",
-    thumbnail: "https://picsum.photos/seed/panoptico1/1920/1080",
-    description: "UMA INVESTIGAÇÃO SOBRE A MEMÓRIA E A PASSAGEM DAS HORAS. ATRAVÉS DE RELATOS ÍNTIMOS E IMAGENS CONTEMPLATIVAS, O DOCUMENTÁRIO QUESTIONA COMO RETEMOS O QUE É EFÊMERO. PRODUÇÃO INDEPENDENTE COM FOCO EM NARRATIVA EXPERIMENTAL.",
+    title: "KENNER — X-LEVEL",
+    category: "COMERCIAL",
+    vimeoId: "956764521",
+    vimeoHash: "9d854fdf6e",
+    thumbnail: "https://i.vimeocdn.com/video/1868507147-dae8263559cadec8dfafe21118c9e48111e53a26df538ca319d92e3e94eae1dc-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
   {
     id: "p3",
-    title: "SISTEMAS URBANOS",
-    category: "EXPERIMENTAL",
-    video: "https://assets.mixkit.co/videos/preview/mixkit-waves-in-the-water-1164-large.mp4",
-    thumbnail: "https://picsum.photos/seed/panoptico2/1920/1080",
-    description: "EXPLORAÇÃO VISUAL DAS ESTRUTURAS QUE COMPÕEM A CIDADE MODERNA. UM ENSAIO SOBRE FLUXO, CONCRETO E A INTERAÇÃO HUMANA COM O ESPAÇO CONSTRUÍDO. TRILHA SONORA ORIGINAL E MONTAGEM RÍTMICA.",
+    title: "LOLA COSMETICS — BOSSA",
+    category: "COMERCIAL",
+    vimeoId: "1166865336",
+    vimeoHash: "efd39deff7",
+    thumbnail: "https://i.vimeocdn.com/video/2124645872-c8a0385984eb6ae676b22d612a77dc1fa96ce2db268714bbeb09a04607f43413-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
   {
     id: "p4",
-    title: "HORIZONTE AZUL",
-    category: "CINEMATOGRAFIA",
-    video: "https://assets.mixkit.co/videos/preview/mixkit-white-clouds-in-a-blue-sky-1171-large.mp4",
-    thumbnail: "https://picsum.photos/seed/panoptico3/1920/1080",
-    description: "ESTUDO SOBRE A LUZ E A VASTIDÃO. CAPTURADO EM FORMATO ANAMÓRFICO, O PROJETO BUSCA TRANSMITIR A SENSAÇÃO DE LIBERDADE E ISOLAMENTO EM PAISAGENS NATURAIS INTOCADAS.",
+    title: "SACADA — ENTRELACE",
+    category: "FASHION FILM",
+    vimeoId: "954207533",
+    vimeoHash: "4801644608",
+    thumbnail: "https://i.vimeocdn.com/video/2124667495-60fa293b14182b77b884ec1379f2b9930861b7f74d64f2dc558f4628ef56ca19-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p5",
+    title: "JOVEMD! — SENADOR",
+    category: "VIDEOCLIPE",
+    vimeoId: "1166793032",
+    vimeoHash: "7d05654e07",
+    thumbnail: "https://i.vimeocdn.com/video/2124669645-2544c9df0bbf44943281602f742fba23b212b1fd8b71ba733ed55463e083c528-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p6",
+    title: "FILIPE RET — QUERO PAZ",
+    category: "VIDEOCLIPE",
+    vimeoId: "1166877883",
+    vimeoHash: "fa9bba8ff9",
+    thumbnail: "https://i.vimeocdn.com/video/2124662558-a78dc2650380c7672edfca14d60eea3159a78ba23138b723f7d8328d2e44b606-d_1280",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
 ];
 
@@ -93,15 +124,15 @@ export default function App() {
   const renderHome = () => (
     <main className="pt-48 pb-32 px-6 md:px-16">
       {/* Project List */}
-      <div id="trabalhos" className="flex flex-col gap-24 max-w-5xl mx-auto scroll-mt-64">
+      <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-64">
         {projects.map((project, index) => (
           <motion.div
             key={project.id}
-            initial={index === 0 ? { opacity: 0 } : { opacity: 0, y: 10 }}
+            initial={index < 2 ? { opacity: 0 } : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "0px" }}
-            animate={index === 0 && !loading ? { opacity: 1, y: 0 } : undefined}
-            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: index === 0 ? 0.3 : 0 }}
+            animate={index < 2 && !loading ? { opacity: 1, y: 0 } : undefined}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: index < 2 ? 0.3 : 0 }}
             className="group"
           >
             <div 
@@ -113,7 +144,7 @@ export default function App() {
                 <img 
                   src={project.thumbnail} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-[1.01]"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-[1.02]"
                   referrerPolicy="no-referrer"
                 />
               )}
@@ -122,7 +153,7 @@ export default function App() {
                 <div className="w-full h-full relative">
                   {activeVideo === project.id && (
                     <iframe
-                      src={`https://player.vimeo.com/video/${project.vimeoId}?autoplay=1&title=0&byline=0&portrait=0`}
+                      src={`https://player.vimeo.com/video/${project.vimeoId}?h=${project.vimeoHash || ''}&autoplay=1&title=0&byline=0&portrait=0`}
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
                       className="absolute top-0 left-0 w-full h-full"
@@ -144,18 +175,17 @@ export default function App() {
                 </div>
               )}
             </div>
-            <div className="mt-6 flex justify-between items-baseline border-b border-black/10 pb-3">
+            <div className="mt-4 flex justify-end">
               <motion.h2 
-                initial={{ width: 0 }}
-                whileInView={{ width: "auto" }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1.2, steps: 20 }}
-                className="tracking-tighter opacity-90 text-[13px] overflow-hidden whitespace-nowrap cursor-pointer hover:opacity-40 transition-opacity font-bold"
+                transition={{ duration: 1.2 }}
+                className="font-mono tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
                 onClick={() => setSelectedProject(project)}
               >
                 {project.title}
               </motion.h2>
-              <span className="tracking-tighter opacity-40 text-[10px]">{project.category}</span>
             </div>
           </motion.div>
         ))}
