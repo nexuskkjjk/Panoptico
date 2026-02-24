@@ -84,7 +84,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'films' | 'about' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'highlights' | 'contact'>('home');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [time, setTime] = useState(new Date());
@@ -201,7 +201,7 @@ export default function App() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2 }}
-                className="font-mono tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
+                className="tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
                 onClick={() => setSelectedProject(project)}
               >
                 {project.title}
@@ -243,13 +243,10 @@ export default function App() {
     </main>
   );
 
-  const renderFilms = () => (
+  const renderHighlights = () => (
     <main className="pt-48 pb-32 px-6 md:px-16">
       <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
-        <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">FILMOGRAFIA COMPLETA / ALL FILMS</div>
-        <h1 className="text-[40px] md:text-[60px] font-bold tracking-tighter uppercase leading-[0.9]">
-          NOSSO REPERTÓRIO <br /> VISUAL COMPLETO.
-        </h1>
+        <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">SELECTED WORKS / HIGHLIGHTS</div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-[1400px] mx-auto">
@@ -285,116 +282,8 @@ export default function App() {
     </main>
   );
 
-  const renderAbout = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16 font-mono">
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5 }}
-        className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24"
-      >
-        {/* Left Column: Main Info */}
-        <div className="md:col-span-7 flex flex-col gap-12">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-[12px] font-bold tracking-tight">PANÓPTICO FILMES — QUEM SOMOS</h1>
-            <span className="text-[11px] opacity-40 uppercase tracking-widest">ESTABLISHED 2020 / RIO DE JANEIRO</span>
-          </div>
-
-          <div className="flex flex-col gap-6 max-w-xl">
-            <p className="text-[11px] leading-[1.8] opacity-80">
-              A PANÓPTICO FILMES É UMA PRODUTORA INDEPENDENTE FOCADA NA CRIAÇÃO DE NARRATIVAS VISUAIS QUE DESAFIAM O CONVENCIONAL. NASCEMOS DA NECESSIDADE DE OBSERVAR O MUNDO SOB DIFERENTES ÂNGULOS, CAPTURANDO A ESSÊNCIA DO QUE MUITAS VEZES PASSA DESPERCEBIDO.
-            </p>
-            <p className="text-[11px] leading-[1.8] opacity-80">
-              NOSSA ESTÉTICA É GUIADA PELA VERDADE DA LUZ E PELA FORÇA DO MOVIMENTO. CADA PROJETO É UM NOVO EXPERIMENTO, UMA NOVA FORMA DE TRADUZIR SENTIMENTOS EM QUADROS CINEMATOGRÁFICOS.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
-            <div className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest">01 / ESTÉTICA</span>
-              <p className="text-[11px] opacity-60">GUIADA PELA VERDADE DA LUZ E PELA FORÇA DO MOVIMENTO.</p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-[10px] font-bold opacity-40 uppercase tracking-widest">02 / PROPÓSITO</span>
-              <p className="text-[11px] opacity-60">CINEMA COMO FERRAMENTA DE TRANSFORMAÇÃO E OBSERVAÇÃO.</p>
-            </div>
-          </div>
-
-          <div className="mt-auto pt-12 border-t border-[var(--text)]/10 flex flex-col gap-1">
-            <span className="text-[10px] opacity-40 uppercase">LOCATED IN RIO DE JANEIRO, BRASIL</span>
-            <span className="text-[10px] font-bold uppercase">AVAILABLE WORLDWIDE</span>
-          </div>
-        </div>
-
-        {/* Right Column: Accordions */}
-        <div className="md:col-span-5 flex flex-col pt-0 md:pt-48">
-          {/* Expertise Accordion */}
-          <div className="border-t border-[var(--text)]/20 py-6">
-            <button 
-              onClick={() => setExpandedSection(expandedSection === 'expertise' ? null : 'expertise')}
-              className="w-full flex justify-between items-center text-[11px] font-bold tracking-widest hover:opacity-50 transition-opacity"
-            >
-              <span>EXPERTISE</span>
-              <span className="text-[16px] leading-none">{expandedSection === 'expertise' ? '−' : '+'}</span>
-            </button>
-            <AnimatePresence>
-              {expandedSection === 'expertise' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-6 flex flex-col gap-2 text-[10px] opacity-60 uppercase">
-                    {['DIREÇÃO DE FOTOGRAFIA', 'DIREÇÃO CRIATIVA', 'MONTAGEM E EDIÇÃO', 'COLOR GRADING', 'PRODUÇÃO EXECUTIVA', 'STORYTELLING VISUAL'].map((item, i) => (
-                      <div key={i} className="flex justify-between border-b border-[var(--text)]/5 pb-1">
-                        <span>{item}</span>
-                        <span>0{i + 1}</span>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Selected Clients Accordion */}
-          <div className="border-t border-b border-[var(--text)]/20 py-6">
-            <button 
-              onClick={() => setExpandedSection(expandedSection === 'about-clients' ? null : 'about-clients')}
-              className="w-full flex justify-between items-center text-[11px] font-bold tracking-widest hover:opacity-50 transition-opacity"
-            >
-              <span>SELECTED CLIENTS</span>
-              <span className="text-[16px] leading-none">{expandedSection === 'about-clients' ? '−' : '+'}</span>
-            </button>
-            <AnimatePresence>
-              {expandedSection === 'about-clients' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-6 grid grid-cols-2 gap-y-2 text-[10px] opacity-60 uppercase">
-                    {['KENNER', 'SACADA', 'LOLA COSMETICS', 'FILIPE RET', 'MC CABELINHO', 'L7NNON', 'JOVEMD!', 'RESERVA'].map((client, i) => (
-                      <span key={i}>{client}</span>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <div className="mt-12 text-[40px] font-bold tracking-tighter opacity-5 self-end uppercase">SOBRE</div>
-        </div>
-      </motion.section>
-    </main>
-  );
-
   const renderContact = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16 font-mono">
+    <main className="pt-48 pb-32 px-6 md:px-16 font-sans">
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -402,20 +291,20 @@ export default function App() {
         className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24"
       >
         {/* Left Column: Contact Info */}
-        <div className="md:col-span-7 flex flex-col gap-12">
+        <div className="md:col-span-5 flex flex-col gap-12">
           <div className="flex flex-col gap-1">
-            <h1 className="text-[12px] font-bold tracking-tight">PANÓPTICO FILMES — PRODUTORA AUDIOVISUAL</h1>
-            <span className="text-[11px] opacity-40 underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">MEMBRO ASSOCIADO BRAZILIAN CONTENT</span>
+            <h1 className="text-[12px] font-bold tracking-tight">PRODUTORA AUDIOVISUAL INDEPENDENTE</h1>
+            <span className="text-[11px] opacity-40 underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all uppercase">MEMBRO ASSOCIADO BRAZILIAN CONTENT</span>
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="text-[11px]">PHONE: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99999 8888</span></div>
-            <div className="text-[11px]">PERSONAL <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">E-MAIL</span></div>
+            <div className="text-[11px] uppercase">PHONE: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99999 8888</span></div>
+            <div className="text-[11px] uppercase">E-MAIL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">CONTATO@PRODUTORA.FILMS</span></div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="text-[11px]">LOCATED IN RIO DE JANEIRO, BRASIL</div>
-            <div className="text-[11px]">AVAILABLE WORLDWIDE</div>
+            <div className="text-[11px] uppercase">LOCATED IN RIO DE JANEIRO, BRASIL</div>
+            <div className="text-[11px] uppercase">AVAILABLE WORLDWIDE</div>
           </div>
 
           <div className="flex gap-4 text-[11px] font-bold">
@@ -423,108 +312,49 @@ export default function App() {
             <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">VIMEO</span>
             <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">LINKEDIN</span>
           </div>
-
-          <div className="flex flex-col gap-8 mt-4">
-            <div className="text-[11px] font-bold tracking-widest">AGENT — PANÓPTICO REPRESENTAÇÕES</div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-1">
-                <div className="text-[11px] font-bold">RODRIGO SILVA</div>
-                <div className="text-[11px] underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">RODRIGO@PANOPTICO.FILMS</div>
-                <div className="text-[11px] underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 98888 7777</div>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <div className="text-[11px] font-bold">MARINA COSTA</div>
-                <div className="text-[11px] underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">MARINA@PANOPTICO.FILMS</div>
-                <div className="text-[11px] underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 97777 6666</div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Right Column: Accordions */}
-        <div className="md:col-span-5 flex flex-col pt-0 md:pt-48">
-          {/* Selected Clients Accordion */}
-          <div className="border-t border-[var(--text)]/20 py-6">
-            <button 
-              onClick={() => setExpandedSection(expandedSection === 'clients' ? null : 'clients')}
-              className="w-full flex justify-between items-center text-[11px] font-bold tracking-widest hover:opacity-50 transition-opacity"
-            >
-              <span>SELECTED CLIENTS</span>
-              <span className="text-[16px] leading-none">{expandedSection === 'clients' ? '−' : '+'}</span>
+        {/* Right Column: Contact Form */}
+        <div className="md:col-span-7 flex flex-col">
+          <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 mb-8 uppercase">SEND A MESSAGE / CONTATO</div>
+          <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold opacity-40 uppercase">Name / Nome</label>
+                <input type="text" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-bold opacity-40 uppercase">Email</label>
+                <input type="email" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold opacity-40 uppercase">Subject / Assunto</label>
+              <input type="text" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+            </div>
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-bold opacity-40 uppercase">Message / Mensagem</label>
+              <textarea rows={4} className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase resize-none"></textarea>
+            </div>
+            <button className="w-fit mt-4 text-[10px] font-bold tracking-widest border border-[var(--text)] px-8 py-4 hover:bg-[var(--text)] hover:text-[var(--bg)] transition-all uppercase">
+              Send Message / Enviar
             </button>
-            <AnimatePresence>
-              {expandedSection === 'clients' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-6 grid grid-cols-2 gap-y-2 text-[10px] opacity-60">
-                    {['KENNER', 'SACADA', 'LOLA COSMETICS', 'FILIPE RET', 'MC CABELINHO', 'L7NNON', 'JOVEMD!', 'RESERVA', 'NIKE', 'ADIDAS'].map((client, i) => (
-                      <span key={i}>{client}</span>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Awards Accordion */}
-          <div className="border-t border-b border-[var(--text)]/20 py-6">
-            <button 
-              onClick={() => setExpandedSection(expandedSection === 'awards' ? null : 'awards')}
-              className="w-full flex justify-between items-center text-[11px] font-bold tracking-widest hover:opacity-50 transition-opacity"
-            >
-              <span>AWARDS AND NOMINATIONS</span>
-              <span className="text-[16px] leading-none">{expandedSection === 'awards' ? '−' : '+'}</span>
-            </button>
-            <AnimatePresence>
-              {expandedSection === 'awards' && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: 'auto', opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="overflow-hidden"
-                >
-                  <div className="pt-6 flex flex-col gap-4 text-[10px] opacity-60">
-                    <div className="flex justify-between">
-                      <span>CANNES LIONS — BRONZE</span>
-                      <span>2024</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>MVF AWARDS — BEST CINEMATOGRAPHY</span>
-                      <span>2023</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>CLIO AWARDS — SILVER</span>
-                      <span>2023</span>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+          </form>
         </div>
       </motion.section>
     </main>
   );
 
   const renderFooter = () => (
-    <footer className="bg-[var(--bg)] text-[var(--text)] pt-32 pb-12 px-6 md:px-16 font-mono border-t border-[var(--border)] transition-colors duration-500">
+    <footer className="bg-[var(--bg)] text-[var(--text)] pt-32 pb-12 px-6 md:px-16 font-sans border-t border-[var(--border)] transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-8">
           {/* Sitemap */}
           <div className="flex flex-col gap-6">
-            <span className="text-[10px] font-bold opacity-40">[SITEMAP]</span>
+            <span className="text-[10px] font-bold opacity-40 uppercase">[SITEMAP]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
               <button onClick={() => setCurrentPage('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
-              <button onClick={() => setCurrentPage('films')} className="w-fit hover:opacity-40 transition-opacity uppercase">Films</button>
-              <button onClick={() => setCurrentPage('about')} className="w-fit hover:opacity-40 transition-opacity uppercase">About</button>
+              <button onClick={() => setCurrentPage('highlights')} className="w-fit hover:opacity-40 transition-opacity uppercase">Highlights</button>
               <button onClick={() => { setCurrentPage('home'); setTimeout(() => document.getElementById('trabalhos')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="w-fit hover:opacity-40 transition-opacity uppercase">Works</button>
               <button onClick={() => setCurrentPage('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contact</button>
             </div>
@@ -532,10 +362,10 @@ export default function App() {
 
           {/* Contact */}
           <div className="flex flex-col gap-6">
-            <span className="text-[10px] font-bold opacity-40">[CONTACT]</span>
+            <span className="text-[10px] font-bold opacity-40 uppercase">[CONTACT]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
-              <span className="hover:opacity-40 transition-opacity cursor-pointer">CONTATO@PANOPTICO.FILMS</span>
-              <span className="hover:opacity-40 transition-opacity cursor-pointer">+55 21 99999 8888</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">CONTATO@PRODUTORA.FILMS</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">+55 21 99999 8888</span>
             </div>
           </div>
 
@@ -551,19 +381,12 @@ export default function App() {
           {/* Tagline & Time */}
           <div className="flex flex-col gap-6 md:items-end md:text-right">
             <div className="text-[10px] font-bold opacity-40 max-w-[200px] uppercase">
-              Panóptico Filmes, produtora audiovisual independente focada em novas perspectivas.
+              PRODUTORA AUDIOVISUAL INDEPENDENTE FOCADA EM NOVAS PERSPECTIVAS.
             </div>
             <div className="text-[11px] font-bold uppercase">
               Rio de Janeiro: {time.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
             </div>
           </div>
-        </div>
-
-        {/* Massive Logo */}
-        <div className="relative">
-          <h1 className="text-[12.5vw] leading-[0.8] font-bold tracking-tighter uppercase select-none whitespace-nowrap">
-            Panóptico®
-          </h1>
         </div>
       </div>
     </footer>
@@ -590,12 +413,12 @@ export default function App() {
             >
               <img 
                 src="https://i.ibb.co/R47dfnNV/Untitled-design.png" 
-                alt="PANÓPTICO FILMES" 
+                alt="PRODUTORA AUDIOVISUAL" 
                 className="w-40 h-40 object-contain grayscale opacity-90"
                 referrerPolicy="no-referrer"
               />
               <div className="typewriter-text tracking-[0.8em] text-[14px]">
-                PANÓPTICO FILMES
+                PRODUTORA AUDIOVISUAL
               </div>
             </motion.div>
           </motion.div>
@@ -613,7 +436,7 @@ export default function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {currentPage === 'home' ? renderHome() : currentPage === 'films' ? renderFilms() : currentPage === 'about' ? renderAbout() : renderContact()}
+                {currentPage === 'home' ? renderHome() : currentPage === 'highlights' ? renderHighlights() : renderContact()}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -632,7 +455,7 @@ export default function App() {
             className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
             onClick={() => setCurrentPage('home')}
           >
-            <span className="opacity-90 tracking-widest font-bold text-[11px]">PANÓPTICO FILMES</span>
+            <span className="opacity-90 tracking-widest font-bold text-[11px]">PRODUTORA AUDIOVISUAL</span>
           </motion.div>
 
           {/* Menu Items */}
@@ -651,31 +474,17 @@ export default function App() {
               </button>
             </motion.div>
 
-            {/* Films */}
+            {/* Highlights */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 4.15 }}
             >
               <button 
-                onClick={() => setCurrentPage('films')}
-                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'films' ? 'font-bold opacity-100' : 'opacity-60'}`}
+                onClick={() => setCurrentPage('highlights')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'highlights' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
-                FILMES
-              </button>
-            </motion.div>
-
-            {/* Info / About */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 4.2 }}
-            >
-              <button 
-                onClick={() => setCurrentPage('about')}
-                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'about' ? 'font-bold opacity-100' : 'opacity-60'}`}
-              >
-                SOBRE
+                HIGHLIGHTS
               </button>
             </motion.div>
 
