@@ -211,35 +211,6 @@ export default function App() {
         ))}
       </div>
 
-      {/* Home Manifesto Section */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1.5 }}
-        className="max-w-[1400px] mx-auto mt-48 mb-24 grid grid-cols-1 md:grid-cols-2 gap-24 items-center"
-      >
-        <div className="flex flex-col gap-8">
-          <div className="text-[10px] font-bold tracking-[0.3em] opacity-40">MANIFESTO</div>
-          <p className="text-[18px] md:text-[22px] leading-[1.4] tracking-tighter font-bold opacity-90">
-            ACREDITAMOS QUE O CINEMA É UMA FERRAMENTA DE TRANSFORMAÇÃO E OBSERVAÇÃO. NOSSA MISSÃO É CRIAR IMAGENS QUE NÃO APENAS DOCUMENTEM, MAS QUE PROVOQUEM E ETERNIZEM MOMENTOS.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 opacity-40 text-[10px] tracking-widest uppercase">
-          <div className="flex justify-between border-b border-[var(--border)] pb-2">
-            <span>ESTÉTICA</span>
-            <span>CRUA / REALISTA</span>
-          </div>
-          <div className="flex justify-between border-b border-[var(--border)] pb-2">
-            <span>ABORDAGEM</span>
-            <span>EXPERIMENTAL</span>
-          </div>
-          <div className="flex justify-between border-b border-[var(--border)] pb-2">
-            <span>FOCO</span>
-            <span>NARRATIVA VISUAL</span>
-          </div>
-        </div>
-      </motion.section>
     </main>
   );
 
@@ -452,14 +423,14 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4 }}
-            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
+            className="hidden sm:flex pointer-events-auto cursor-pointer flex-col gap-0.5"
             onClick={() => setCurrentPage('home')}
           >
             <span className="opacity-90 tracking-widest font-bold text-[11px]">PRODUTORA AUDIOVISUAL</span>
           </motion.div>
 
           {/* Menu Items */}
-          <div className="hidden md:flex items-center gap-24 pointer-events-auto">
+          <div className="flex items-center gap-6 md:gap-24 pointer-events-auto">
             {/* Index / Works */}
             <motion.div 
               initial={{ opacity: 0 }}
