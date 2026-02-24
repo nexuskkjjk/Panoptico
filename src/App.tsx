@@ -87,6 +87,12 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'contact'>('home');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Typewriter sound effects
@@ -238,7 +244,7 @@ export default function App() {
   );
 
   const renderAbout = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16 min-h-screen font-mono">
+    <main className="pt-48 pb-32 px-6 md:px-16 font-mono">
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -346,7 +352,7 @@ export default function App() {
   );
 
   const renderContact = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16 min-h-screen font-mono">
+    <main className="pt-48 pb-32 px-6 md:px-16 font-mono">
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -466,9 +472,63 @@ export default function App() {
     </main>
   );
 
+  const renderFooter = () => (
+    <footer className="bg-[var(--bg)] text-[var(--text)] pt-32 pb-12 px-6 md:px-16 font-mono border-t border-[var(--border)] transition-colors duration-500">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-8">
+          {/* Sitemap */}
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-bold opacity-40">[SITEMAP]</span>
+            <div className="flex flex-col gap-2 text-[11px] font-bold">
+              <button onClick={() => setCurrentPage('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
+              <button onClick={() => setCurrentPage('about')} className="w-fit hover:opacity-40 transition-opacity uppercase">About</button>
+              <button onClick={() => { setCurrentPage('home'); setTimeout(() => document.getElementById('trabalhos')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="w-fit hover:opacity-40 transition-opacity uppercase">Works</button>
+              <button onClick={() => setCurrentPage('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contact</button>
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-bold opacity-40">[CONTACT]</span>
+            <div className="flex flex-col gap-2 text-[11px] font-bold">
+              <span className="hover:opacity-40 transition-opacity cursor-pointer">CONTATO@PANOPTICO.FILMS</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer">+55 21 99999 8888</span>
+            </div>
+          </div>
+
+          {/* Address */}
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-bold opacity-40 uppercase">Address</span>
+            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
+              <span>Rio de Janeiro, Brasil</span>
+              <span>Disponíveis Globalmente</span>
+            </div>
+          </div>
+
+          {/* Tagline & Time */}
+          <div className="flex flex-col gap-6 md:items-end md:text-right">
+            <div className="text-[10px] font-bold opacity-40 max-w-[200px] uppercase">
+              Panóptico Filmes, produtora audiovisual independente focada em novas perspectivas.
+            </div>
+            <div className="text-[11px] font-bold uppercase">
+              Rio de Janeiro: {time.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+            </div>
+          </div>
+        </div>
+
+        {/* Massive Logo */}
+        <div className="relative">
+          <h1 className="text-[12.5vw] leading-[0.8] font-bold tracking-tighter uppercase select-none whitespace-nowrap">
+            Panóptico®
+          </h1>
+        </div>
+      </div>
+    </footer>
+  );
+
   return (
     <div className={`min-h-screen font-sans uppercase tracking-tight text-[12px] font-medium selection:bg-black selection:text-white transition-colors duration-500 ${isDarkMode ? 'dark' : ''}`}>
-      <div className="bg-[var(--bg)] text-[var(--text)] min-h-screen">
+      <div className="bg-[var(--bg)] text-[var(--text)] min-h-screen flex flex-col">
       
       <AnimatePresence>
         {loading && (
@@ -498,6 +558,107 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {!loading && (
+        <div className="flex-grow flex flex-col">
+          <div className="flex-grow">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentPage}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                {currentPage === 'home' ? renderHome() : currentPage === 'about' ? renderAbout() : renderContact()}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+          {renderFooter()}
+        </div>
+      )}
+
+      {/* Navigation */}
+      <nav className="absolute top-0 left-0 right-0 z-50 px-6 pt-2 pb-4 md:px-16 bg-transparent pointer-events-none">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-5 items-start gap-4">
+          {/* Brand */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 4 }}
+            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
+            onClick={() => setCurrentPage('home')}
+          >
+            <span className="opacity-90 tracking-widest font-bold text-[11px]">PANÓPTICO FILMES</span>
+          </motion.div>
+
+          {/* Index / Works */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 4.1 }}
+            className="hidden md:flex pointer-events-auto"
+          >
+            <button 
+              onClick={() => setCurrentPage('home')}
+              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'home' ? 'font-bold opacity-100' : 'opacity-60'}`}
+            >
+              HOME
+            </button>
+          </motion.div>
+
+          {/* Info / About */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 4.2 }}
+            className="hidden md:flex pointer-events-auto"
+          >
+            <button 
+              onClick={() => setCurrentPage('about')}
+              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'about' ? 'font-bold opacity-100' : 'opacity-60'}`}
+            >
+              SOBRE
+            </button>
+          </motion.div>
+
+          {/* Contact */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 4.3 }}
+            className="hidden md:flex pointer-events-auto"
+          >
+            <button 
+              onClick={() => setCurrentPage('contact')}
+              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'contact' ? 'font-bold opacity-100' : 'opacity-60'}`}
+            >
+              CONTATO
+            </button>
+          </motion.div>
+
+          {/* Theme Toggle */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 4.4 }}
+            className="flex justify-end gap-4 pointer-events-auto items-start"
+          >
+            <button 
+              onClick={() => setIsDarkMode(false)}
+              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${!isDarkMode ? 'font-bold opacity-100' : 'opacity-30'}`}
+            >
+              LIGHT
+            </button>
+            <button 
+              onClick={() => setIsDarkMode(true)}
+              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${isDarkMode ? 'font-bold opacity-100' : 'opacity-30'}`}
+            >
+              DARK
+            </button>
+          </motion.div>
+        </div>
+      </nav>
 
       {/* Project Detail Modal */}
       <AnimatePresence>
@@ -610,113 +771,6 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 px-6 pt-2 pb-4 md:px-16 bg-transparent pointer-events-none">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-5 items-start gap-4">
-          {/* Brand */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4 }}
-            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
-            onClick={() => setCurrentPage('home')}
-          >
-            <span className="opacity-90 tracking-widest font-bold text-[11px]">PANÓPTICO FILMES</span>
-          </motion.div>
-
-          {/* Index / Works */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.1 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('home')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'home' ? 'font-bold opacity-100' : 'opacity-60'}`}
-            >
-              HOME
-            </button>
-          </motion.div>
-
-          {/* Info / About */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.2 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('about')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'about' ? 'font-bold opacity-100' : 'opacity-60'}`}
-            >
-              SOBRE
-            </button>
-          </motion.div>
-
-          {/* Contact */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.3 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('contact')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'contact' ? 'font-bold opacity-100' : 'opacity-60'}`}
-            >
-              CONTATO
-            </button>
-          </motion.div>
-
-          {/* Theme Toggle */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.4 }}
-            className="flex justify-end gap-4 pointer-events-auto items-start"
-          >
-            <button 
-              onClick={() => setIsDarkMode(false)}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${!isDarkMode ? 'font-bold opacity-100' : 'opacity-30'}`}
-            >
-              LIGHT
-            </button>
-            <button 
-              onClick={() => setIsDarkMode(true)}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${isDarkMode ? 'font-bold opacity-100' : 'opacity-30'}`}
-            >
-              DARK
-            </button>
-          </motion.div>
-        </div>
-      </nav>
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={currentPage}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          {currentPage === 'home' ? renderHome() : currentPage === 'about' ? renderAbout() : renderContact()}
-        </motion.div>
-      </AnimatePresence>
-
-      {/* Footer */}
-      <footer className="pt-16 pb-16 px-6 md:px-16 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-16">
-        <div className="opacity-40 text-[10px]">
-          © 2026 PANÓPTICO FILMES. TODOS OS DIREITOS RESERVADOS.
-        </div>
-        <div className="flex gap-12">
-          <a href="#" className="hover:opacity-40 transition-opacity"><Twitter className="w-4 h-4 opacity-60" /></a>
-          <a href="#" className="hover:opacity-40 transition-opacity"><Github className="w-4 h-4 opacity-60" /></a>
-          <a href="#" className="hover:opacity-40 transition-opacity"><Instagram className="w-4 h-4 opacity-60" /></a>
-          <a href="#" className="hover:opacity-40 transition-opacity"><Mail className="w-4 h-4 opacity-60" /></a>
-        </div>
-      </footer>
       </div>
     </div>
   );
