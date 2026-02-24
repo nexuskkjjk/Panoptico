@@ -410,7 +410,7 @@ export default function App() {
         {/* Left Column: Contact Info */}
         <div className="md:col-span-5 flex flex-col gap-12">
           <div className="flex flex-col gap-1">
-            <h1 className="text-[14px] font-bold tracking-tight uppercase">PANOPTICO FILMES — PRODUTORA AUDIOVISUAL</h1>
+            <h1 className="text-[14px] font-bold tracking-tight uppercase">PANOPTICO FILMES</h1>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -424,8 +424,8 @@ export default function App() {
           </div>
 
           <div className="flex gap-4 text-[11px] font-bold">
-            <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">INSTAGRAM</span>
-            <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">VIMEO</span>
+            <a href="https://www.instagram.com/PANOPTICO.FILMES" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">INSTAGRAM</a>
+            <a href="https://vimeo.com/panopticofilmes" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">VIMEO</a>
           </div>
 
           {/* Clients Section */}
@@ -506,8 +506,8 @@ export default function App() {
           <div className="flex flex-col gap-6">
             <span className="text-[10px] font-bold opacity-40 uppercase">[SOCIAL]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
-              <span className="hover:opacity-40 transition-opacity cursor-pointer">Instagram</span>
-              <span className="hover:opacity-40 transition-opacity cursor-pointer">Vimeo</span>
+              <a href="https://www.instagram.com/PANOPTICO.FILMES" target="_blank" rel="noopener noreferrer" className="hover:opacity-40 transition-opacity cursor-pointer">Instagram</a>
+              <a href="https://vimeo.com/panopticofilmes" target="_blank" rel="noopener noreferrer" className="hover:opacity-40 transition-opacity cursor-pointer">Vimeo</a>
             </div>
           </div>
         </div>
@@ -546,12 +546,12 @@ export default function App() {
             >
               <img 
                 src="https://i.ibb.co/R47dfnNV/Untitled-design.png" 
-                alt="PRODUTORA AUDIOVISUAL" 
+                alt="PANOPTICO FILMES" 
                 className="w-40 h-40 object-contain grayscale opacity-90"
                 referrerPolicy="no-referrer"
               />
               <div className="typewriter-text tracking-[0.8em] text-[14px]">
-                PRODUTORA AUDIOVISUAL
+                PANOPTICO FILMES
               </div>
             </motion.div>
           </motion.div>
@@ -588,7 +588,7 @@ export default function App() {
             className="hidden sm:flex pointer-events-auto cursor-pointer flex-col gap-0.5"
             onClick={() => setCurrentPage('home')}
           >
-            <span className="opacity-90 tracking-widest font-bold text-[11px]">PRODUTORA AUDIOVISUAL</span>
+            <span className="opacity-90 tracking-widest font-bold text-[11px]">PANOPTICO FILMES</span>
           </motion.div>
 
           {/* Menu Items */}
