@@ -25,7 +25,7 @@ const projects: Array<{
     vimeoId: "1041871186",
     vimeoHash: "f449db2df9",
     thumbnail: "https://i.vimeocdn.com/video/2124668721-caff6e5a830a5c6a0fe35fada2f292db53b20aa3b2e0a608c3bb68c4199cf7fb-d_1280",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p2",
@@ -34,7 +34,13 @@ const projects: Array<{
     vimeoId: "956764521",
     vimeoHash: "9d854fdf6e",
     thumbnail: "https://i.vimeocdn.com/video/1868507147-dae8263559cadec8dfafe21118c9e48111e53a26df538ca319d92e3e94eae1dc-d_1280",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
+    gallery: [
+      "https://i.ibb.co/FbphV7c0/Timeline-v2-00-00-46-06-Still080.png",
+      "https://i.ibb.co/svZMSByN/Timeline-v2-00-00-38-10-Still070.png",
+      "https://i.ibb.co/S7m3wMZg/Timeline-v2-00-00-39-22-Still072.png",
+      "https://i.ibb.co/mrkQj4Lm/Timeline-v2-00-00-54-20-Still087.png"
+    ]
   },
   {
     id: "p3",
@@ -43,7 +49,7 @@ const projects: Array<{
     vimeoId: "1166865336",
     vimeoHash: "efd39deff7",
     thumbnail: "https://i.vimeocdn.com/video/2124645872-c8a0385984eb6ae676b22d612a77dc1fa96ce2db268714bbeb09a04607f43413-d_1280",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p4",
@@ -52,7 +58,7 @@ const projects: Array<{
     vimeoId: "954207533",
     vimeoHash: "4801644608",
     thumbnail: "https://i.vimeocdn.com/video/2124667495-60fa293b14182b77b884ec1379f2b9930861b7f74d64f2dc558f4628ef56ca19-d_1280",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p7",
@@ -60,7 +66,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "675329933",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p8",
@@ -69,7 +75,7 @@ const projects: Array<{
     vimeoId: "1167841743",
     vimeoHash: "985ea1d650",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p6",
@@ -78,7 +84,7 @@ const projects: Array<{
     vimeoId: "1166877883",
     vimeoHash: "fa9bba8ff9",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p13",
@@ -87,7 +93,7 @@ const projects: Array<{
     vimeoId: "1166779536",
     vimeoHash: "344fc89908",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p14",
@@ -96,7 +102,7 @@ const projects: Array<{
     vimeoId: "503641665",
     vimeoHash: "ebe547a74b",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p5",
@@ -105,7 +111,7 @@ const projects: Array<{
     vimeoId: "1166793032",
     vimeoHash: "7d05654e07",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p15",
@@ -114,7 +120,7 @@ const projects: Array<{
     vimeoId: "676467610",
     vimeoHash: "17925b4d69",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p16",
@@ -123,7 +129,7 @@ const projects: Array<{
     vimeoId: "1167850997",
     vimeoHash: "e91af12e3a",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p17",
@@ -132,7 +138,7 @@ const projects: Array<{
     vimeoId: "821890935",
     vimeoHash: "cc62328569",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p18",
@@ -141,7 +147,7 @@ const projects: Array<{
     vimeoId: "748221186",
     vimeoHash: "26726dd11c",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p19",
@@ -149,7 +155,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "954215639",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p9",
@@ -158,7 +164,7 @@ const projects: Array<{
     vimeoId: "1166880173",
     vimeoHash: "c3c23b60ba",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p10",
@@ -167,7 +173,7 @@ const projects: Array<{
     vimeoId: "1166870300",
     vimeoHash: "3aae8bfa69",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p11",
@@ -176,7 +182,7 @@ const projects: Array<{
     vimeoId: "1166868756",
     vimeoHash: "3189a7bcff",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
   {
     id: "p12",
@@ -185,7 +191,7 @@ const projects: Array<{
     vimeoId: "457119275",
     vimeoHash: "045fa16b88",
     thumbnail: "",
-    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+    description: "",
   },
 ];
 
