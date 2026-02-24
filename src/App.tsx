@@ -215,8 +215,8 @@ export default function App() {
             const response = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${project.vimeoId}`);
             const data = await response.json();
             if (data.thumbnail_url) {
-              // Replace the size in the URL to get high res (e.g., 1280)
-              thumbs[project.id] = data.thumbnail_url.replace(/_[0-9x]+/, '_1280');
+              // Replace the size in the URL to get medium res for faster loading
+              thumbs[project.id] = data.thumbnail_url.replace(/_[0-9x]+/, '_640');
             }
           } catch (error) {
             console.error(`Error fetching thumbnail for ${project.vimeoId}:`, error);
@@ -728,34 +728,6 @@ export default function App() {
                     ></iframe>
                   </motion.div>
                 )}
-
-                {/* Info Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-                  <div className="md:col-span-2 flex flex-col gap-4">
-                    <div className="text-[10px] font-bold tracking-[0.3em] opacity-40">SOBRE O PROJETO / ABOUT</div>
-                    <p className="text-[16px] md:text-[18px] leading-[1.5] tracking-tight opacity-90 text-justify font-medium">
-                      {selectedProject.description}
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-col gap-8">
-                    <div className="text-[10px] font-bold tracking-[0.3em] opacity-40">DETALHES / SPECS</div>
-                    <div className="flex flex-col gap-4">
-                      <div className="flex justify-between text-[11px] border-b border-[var(--border)] pb-2">
-                        <span className="opacity-40">ANO</span>
-                        <span className="font-bold">2026</span>
-                      </div>
-                      <div className="flex justify-between text-[11px] border-b border-[var(--border)] pb-2">
-                        <span className="opacity-40">FORMATO</span>
-                        <span className="font-bold">4K DIGITAL / 35MM</span>
-                      </div>
-                      <div className="flex justify-between text-[11px] border-b border-[var(--border)] pb-2">
-                        <span className="opacity-40">LOCAL</span>
-                        <span className="font-bold">RIO DE JANEIRO, BR</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
 
                 {/* Gallery Section */}
                 {selectedProject.gallery && (
