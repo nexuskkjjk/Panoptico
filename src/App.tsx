@@ -84,7 +84,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'films' | 'about' | 'contact'>('home');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [time, setTime] = useState(new Date());
@@ -240,6 +240,48 @@ export default function App() {
           </div>
         </div>
       </motion.section>
+    </main>
+  );
+
+  const renderFilms = () => (
+    <main className="pt-48 pb-32 px-6 md:px-16">
+      <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
+        <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">FILMOGRAFIA COMPLETA / ALL FILMS</div>
+        <h1 className="text-[40px] md:text-[60px] font-bold tracking-tighter uppercase leading-[0.9]">
+          NOSSO REPERTÓRIO <br /> VISUAL COMPLETO.
+        </h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-[1400px] mx-auto">
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.1 }}
+            className="group"
+          >
+            <div 
+              className="relative aspect-video overflow-hidden bg-neutral-50 rounded-none cursor-pointer"
+              onClick={() => setSelectedProject(project)}
+            >
+              <img 
+                src={project.thumbnail} 
+                alt="" 
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="text-white text-[10px] font-bold tracking-widest border border-white/40 px-4 py-2">VER DETALHES</span>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-col gap-1">
+              <span className="text-[9px] opacity-40 font-bold tracking-widest uppercase">{project.category}</span>
+              <h2 className="font-bold tracking-tight text-[13px] uppercase">{project.title}</h2>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </main>
   );
 
@@ -481,6 +523,7 @@ export default function App() {
             <span className="text-[10px] font-bold opacity-40">[SITEMAP]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
               <button onClick={() => setCurrentPage('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
+              <button onClick={() => setCurrentPage('films')} className="w-fit hover:opacity-40 transition-opacity uppercase">Films</button>
               <button onClick={() => setCurrentPage('about')} className="w-fit hover:opacity-40 transition-opacity uppercase">About</button>
               <button onClick={() => { setCurrentPage('home'); setTimeout(() => document.getElementById('trabalhos')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="w-fit hover:opacity-40 transition-opacity uppercase">Works</button>
               <button onClick={() => setCurrentPage('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contact</button>
@@ -570,7 +613,7 @@ export default function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {currentPage === 'home' ? renderHome() : currentPage === 'about' ? renderAbout() : renderContact()}
+                {currentPage === 'home' ? renderHome() : currentPage === 'films' ? renderFilms() : currentPage === 'about' ? renderAbout() : renderContact()}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -579,8 +622,8 @@ export default function App() {
       )}
 
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 px-6 pt-2 pb-4 md:px-16 bg-transparent pointer-events-none">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-5 items-start gap-4">
+      <nav className="absolute top-0 left-0 right-0 z-50 px-4 pt-6 pb-4 md:px-8 bg-transparent pointer-events-none">
+        <div className="max-w-full mx-auto flex justify-between items-center gap-8">
           {/* Brand */}
           <motion.div 
             initial={{ opacity: 0 }}
@@ -592,57 +635,71 @@ export default function App() {
             <span className="opacity-90 tracking-widest font-bold text-[11px]">PANÓPTICO FILMES</span>
           </motion.div>
 
-          {/* Index / Works */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.1 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('home')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'home' ? 'font-bold opacity-100' : 'opacity-60'}`}
+          {/* Menu Items */}
+          <div className="hidden md:flex items-center gap-24 pointer-events-auto">
+            {/* Index / Works */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.1 }}
             >
-              HOME
-            </button>
-          </motion.div>
+              <button 
+                onClick={() => setCurrentPage('home')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'home' ? 'font-bold opacity-100' : 'opacity-60'}`}
+              >
+                HOME
+              </button>
+            </motion.div>
 
-          {/* Info / About */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.2 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('about')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'about' ? 'font-bold opacity-100' : 'opacity-60'}`}
+            {/* Films */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.15 }}
             >
-              SOBRE
-            </button>
-          </motion.div>
+              <button 
+                onClick={() => setCurrentPage('films')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'films' ? 'font-bold opacity-100' : 'opacity-60'}`}
+              >
+                FILMES
+              </button>
+            </motion.div>
 
-          {/* Contact */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 4.3 }}
-            className="hidden md:flex pointer-events-auto"
-          >
-            <button 
-              onClick={() => setCurrentPage('contact')}
-              className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'contact' ? 'font-bold opacity-100' : 'opacity-60'}`}
+            {/* Info / About */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.2 }}
             >
-              CONTATO
-            </button>
-          </motion.div>
+              <button 
+                onClick={() => setCurrentPage('about')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'about' ? 'font-bold opacity-100' : 'opacity-60'}`}
+              >
+                SOBRE
+              </button>
+            </motion.div>
+
+            {/* Contact */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.3 }}
+            >
+              <button 
+                onClick={() => setCurrentPage('contact')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'contact' ? 'font-bold opacity-100' : 'opacity-60'}`}
+              >
+                CONTATO
+              </button>
+            </motion.div>
+          </div>
 
           {/* Theme Toggle */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4.4 }}
-            className="flex justify-end gap-4 pointer-events-auto items-start"
+            className="flex gap-4 pointer-events-auto items-center"
           >
             <button 
               onClick={() => setIsDarkMode(false)}
