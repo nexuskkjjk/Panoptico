@@ -5,7 +5,7 @@
 
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
-import { Github, Twitter, Instagram, Mail } from "lucide-react";
+import { Github, Twitter, Instagram, Mail, Play } from "lucide-react";
 
 const projects: Array<{
   id: string;
@@ -55,19 +55,21 @@ const projects: Array<{
     description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
   {
-    id: "p5",
-    title: "JOVEMD! — SENADOR",
+    id: "p7",
+    title: "L7NNON — OUTRO LUGAR",
     category: "VIDEOCLIPE",
-    vimeoId: "1166793032",
-    vimeoHash: "7d05654e07",
-    thumbnail: "https://i.vimeocdn.com/video/2124669645-2544c9df0bbf44943281602f742fba23b212b1fd8b71ba733ed55463e083c528-d_1280",
-    description: "Exploração visual da estética urbana e do movimento, o videoclipe 'Senador' mergulha em uma narrativa cinematográfica que transita entre o realismo e a abstração. Com uma direção de fotografia focada em texturas e contrastes, o projeto busca capturar a essência da vida noturna e a energia frenética das ruas cariocas, utilizando uma linguagem documental elevada por composições rigorosas e uma montagem rítmica que dialoga diretamente com a sonoridade do artista.",
-    gallery: [
-      "https://i.imgur.com/tJeG85u.jpeg",
-      "https://i.imgur.com/q4Ram74.jpeg",
-      "https://i.imgur.com/F7PXcoK.jpeg",
-      "https://i.imgur.com/2bkHA1N.jpeg"
-    ]
+    vimeoId: "675329933",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p8",
+    title: "LOLA COSMETICS — A FÓRMULA",
+    category: "COMERCIAL",
+    vimeoId: "1167841743",
+    vimeoHash: "985ea1d650",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
   {
     id: "p6",
@@ -75,7 +77,114 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1166877883",
     vimeoHash: "fa9bba8ff9",
-    thumbnail: "https://i.vimeocdn.com/video/2124662558-a78dc2650380c7672edfca14d60eea3159a78ba23138b723f7d8328d2e44b606-d_1280",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p13",
+    title: "JOVEMD! — SAFE",
+    category: "VISUALIZER",
+    vimeoId: "1166779536",
+    vimeoHash: "344fc89908",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p14",
+    title: "PAPPA JACK — SENTINELA",
+    category: "VIDEOCLIPE",
+    vimeoId: "503641665",
+    vimeoHash: "ebe547a74b",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p5",
+    title: "JOVEMD! — SENADOR",
+    category: "VISUALIZER",
+    vimeoId: "1166793032",
+    vimeoHash: "7d05654e07",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p15",
+    title: "BK & L7NNON — DEU AULAS",
+    category: "VIDEOCLIPE",
+    vimeoId: "676467610",
+    vimeoHash: "17925b4d69",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p16",
+    title: "MD CHEFE FT BK — OUTRA HORA",
+    category: "VIDEOCLIPE",
+    vimeoId: "1167850997",
+    vimeoHash: "e91af12e3a",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p17",
+    title: "FILIPE RET — DEUS PERDOA",
+    category: "VIDEOCLIPE",
+    vimeoId: "821890935",
+    vimeoHash: "cc62328569",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p18",
+    title: "DELACRUZ & LUKINHAS — APERTA O START",
+    category: "VIDEOCLIPE",
+    vimeoId: "748221186",
+    vimeoHash: "26726dd11c",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p19",
+    title: "SANXA — A MENTE MESTRA",
+    category: "VIDEOCLIPE",
+    vimeoId: "954215639",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p9",
+    title: "GIORGIO ARMANI — BAJAU",
+    category: "COMERCIAL",
+    vimeoId: "1166880173",
+    vimeoHash: "c3c23b60ba",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p10",
+    title: "ATEEN — 30 ANOS",
+    category: "COMERCIAL",
+    vimeoId: "1166870300",
+    vimeoHash: "3aae8bfa69",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p11",
+    title: "LOLA COSMETICS — PURPLE",
+    category: "COMERCIAL",
+    vimeoId: "1166868756",
+    vimeoHash: "3189a7bcff",
+    thumbnail: "",
+    description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
+  },
+  {
+    id: "p12",
+    title: "BLUEMAN",
+    category: "COMERCIAL",
+    vimeoId: "457119275",
+    vimeoHash: "045fa16b88",
+    thumbnail: "",
     description: "PROJETO AUDIOVISUAL INDEPENDENTE.",
   },
 ];
@@ -84,14 +193,34 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [currentPage, setCurrentPage] = useState<'home' | 'highlights' | 'contact'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'publicidade' | 'videoclipe' | 'contact'>('home');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [time, setTime] = useState(new Date());
+  const [vimeoThumbnails, setVimeoThumbnails] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
+    // Fetch Vimeo thumbnails dynamically
+    const fetchThumbnails = async () => {
+      const thumbs: Record<string, string> = {};
+      for (const project of projects) {
+        if (project.vimeoId && !project.thumbnail) {
+          try {
+            const response = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${project.vimeoId}`);
+            const data = await response.json();
+            if (data.thumbnail_url) {
+              // Replace the size in the URL to get high res (e.g., 1280)
+              thumbs[project.id] = data.thumbnail_url.replace(/_[0-9x]+/, '_1280');
+            }
+          } catch (error) {
+            console.error(`Error fetching thumbnail for ${project.vimeoId}:`, error);
+          }
+        }
+      }
+      setVimeoThumbnails(prev => ({ ...prev, ...thumbs }));
+    };
+
+    fetchThumbnails();
   }, []);
 
   useEffect(() => {
@@ -140,12 +269,11 @@ export default function App() {
     <main className="pt-32 pb-32 px-6 md:px-16">
       {/* Project List */}
       <div className="max-w-[1400px] mx-auto mb-8 flex justify-between items-center border-b border-[var(--border)] pb-4">
-        <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase">TRABALHOS SELECIONADOS — 24/25</div>
-        <div className="text-[10px] opacity-40 uppercase">{projects.length} PROJETOS</div>
+        <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase">SHOWCASE</div>
       </div>
 
       <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-32">
-        {projects.map((project, index) => (
+        {projects.slice(0, 8).map((project, index) => (
           <motion.div
             key={project.id}
             initial={index < 2 ? { opacity: 0 } : { opacity: 0, y: 10 }}
@@ -162,7 +290,7 @@ export default function App() {
               {/* Thumbnail / Poster - Always visible until video is active */}
               {activeVideo !== project.id && (
                 <img 
-                  src={project.thumbnail} 
+                  src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
                   alt="" 
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-[1.02]"
                   referrerPolicy="no-referrer"
@@ -194,6 +322,15 @@ export default function App() {
                   ) : null}
                 </div>
               )}
+
+              {/* Play Button Overlay */}
+              {activeVideo !== project.id && (
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none">
+                  <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center scale-90 group-hover:scale-100 transition-transform duration-700">
+                    <Play className="text-white fill-white w-6 h-6 ml-1 opacity-60" />
+                  </div>
+                </div>
+              )}
             </div>
             <div className="mt-4 flex justify-end">
               <motion.h2 
@@ -201,7 +338,7 @@ export default function App() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 1.2 }}
-                className="tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
+                className="font-sans tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
                 onClick={() => setSelectedProject(project)}
               >
                 {project.title}
@@ -214,44 +351,53 @@ export default function App() {
     </main>
   );
 
-  const renderHighlights = () => (
-    <main className="pt-48 pb-32 px-6 md:px-16">
-      <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
-        <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">SELECTED WORKS / HIGHLIGHTS</div>
-      </div>
+  const renderCategory = (categoryType: 'publicidade' | 'videoclipe') => {
+    const filteredProjects = projects.filter(p => {
+      if (categoryType === 'videoclipe') return p.category === 'VIDEOCLIPE' || p.category === 'VISUALIZER';
+      return p.category === 'COMERCIAL' || p.category === 'FASHION FILM';
+    });
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-[1400px] mx-auto">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            className="group"
-          >
-            <div 
-              className="relative aspect-video overflow-hidden bg-neutral-50 rounded-none cursor-pointer"
-              onClick={() => setSelectedProject(project)}
+    return (
+      <main className="pt-48 pb-32 px-6 md:px-16">
+        <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
+          <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
+            {categoryType === 'videoclipe' ? 'VIDEOCLIPES / MUSIC VIDEOS' : 'PUBLICIDADE / COMMERCIALS'}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-[1400px] mx-auto">
+          {filteredProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group"
             >
-              <img 
-                src={project.thumbnail} 
-                alt="" 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                <span className="text-white text-[10px] font-bold tracking-widest border border-white/40 px-4 py-2">VER DETALHES</span>
+              <div 
+                className="relative aspect-video overflow-hidden bg-neutral-50 rounded-none cursor-pointer"
+                onClick={() => setSelectedProject(project)}
+              >
+                <img 
+                  src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
+                  alt="" 
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <span className="text-white text-[10px] font-bold tracking-widest border border-white/40 px-4 py-2">VER DETALHES</span>
+                </div>
               </div>
-            </div>
-            <div className="mt-4 flex flex-col gap-1">
-              <span className="text-[9px] opacity-40 font-bold tracking-widest uppercase">{project.category}</span>
-              <h2 className="font-bold tracking-tight text-[13px] uppercase">{project.title}</h2>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </main>
-  );
+              <div className="mt-4 flex flex-col gap-1">
+                <span className="text-[9px] opacity-40 font-bold tracking-widest uppercase">{project.category}</span>
+                <h2 className="font-bold tracking-tight text-[13px] uppercase">{project.title}</h2>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </main>
+    );
+  };
 
   const renderContact = () => (
     <main className="pt-48 pb-32 px-6 md:px-16 font-sans">
@@ -264,24 +410,32 @@ export default function App() {
         {/* Left Column: Contact Info */}
         <div className="md:col-span-5 flex flex-col gap-12">
           <div className="flex flex-col gap-1">
-            <h1 className="text-[12px] font-bold tracking-tight">PRODUTORA AUDIOVISUAL INDEPENDENTE</h1>
-            <span className="text-[11px] opacity-40 underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all uppercase">MEMBRO ASSOCIADO BRAZILIAN CONTENT</span>
+            <h1 className="text-[14px] font-bold tracking-tight uppercase">PANOPTICO FILMES — PRODUTORA AUDIOVISUAL</h1>
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="text-[11px] uppercase">PHONE: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99999 8888</span></div>
-            <div className="text-[11px] uppercase">E-MAIL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">CONTATO@PRODUTORA.FILMS</span></div>
+            <div className="text-[11px] uppercase">EMAIL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">PRODUTORA@PANOPTICOFILMES.COM</span></div>
+            <div className="text-[11px] uppercase">TEL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99016-6606</span></div>
           </div>
 
           <div className="flex flex-col gap-1">
-            <div className="text-[11px] uppercase">LOCATED IN RIO DE JANEIRO, BRASIL</div>
+            <div className="text-[11px] uppercase">LOCALIZADA NO RIO DE JANEIRO, BRASIL</div>
             <div className="text-[11px] uppercase">AVAILABLE WORLDWIDE</div>
           </div>
 
           <div className="flex gap-4 text-[11px] font-bold">
             <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">INSTAGRAM</span>
             <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">VIMEO</span>
-            <span className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">LINKEDIN</span>
+          </div>
+
+          {/* Clients Section */}
+          <div className="flex flex-col gap-6 mt-8">
+            <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase">CLIENTES</div>
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] font-bold opacity-80">
+              {["Adidas", "Flamengo", "Kenner", "Lola Cosmetics", "Época Cosméticos", "MC Cabelinho", "Emicida", "Filipe Ret", "L7nnon", "Delacruz", "Sacada", "Ateen", "Blueman", "BK", "Papatinho", "JovemD!"].map((client) => (
+                <span key={client} className="uppercase tracking-tighter">{client}</span>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -319,14 +473,14 @@ export default function App() {
   const renderFooter = () => (
     <footer className="bg-[var(--bg)] text-[var(--text)] pt-32 pb-12 px-6 md:px-16 font-sans border-t border-[var(--border)] transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-16">
           {/* Sitemap */}
           <div className="flex flex-col gap-6">
             <span className="text-[10px] font-bold opacity-40 uppercase">[SITEMAP]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
               <button onClick={() => setCurrentPage('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
-              <button onClick={() => setCurrentPage('highlights')} className="w-fit hover:opacity-40 transition-opacity uppercase">Highlights</button>
-              <button onClick={() => { setCurrentPage('home'); setTimeout(() => document.getElementById('trabalhos')?.scrollIntoView({ behavior: 'smooth' }), 100); }} className="w-fit hover:opacity-40 transition-opacity uppercase">Works</button>
+              <button onClick={() => setCurrentPage('publicidade')} className="w-fit hover:opacity-40 transition-opacity uppercase">Publicidade</button>
+              <button onClick={() => setCurrentPage('videoclipe')} className="w-fit hover:opacity-40 transition-opacity uppercase">Videoclipe</button>
               <button onClick={() => setCurrentPage('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contact</button>
             </div>
           </div>
@@ -335,28 +489,36 @@ export default function App() {
           <div className="flex flex-col gap-6">
             <span className="text-[10px] font-bold opacity-40 uppercase">[CONTACT]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
-              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">CONTATO@PRODUTORA.FILMS</span>
-              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">+55 21 99999 8888</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">PRODUTORA@PANOPTICOFILMES.COM</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">(21) 99016-6606</span>
             </div>
           </div>
 
           {/* Address */}
           <div className="flex flex-col gap-6">
-            <span className="text-[10px] font-bold opacity-40 uppercase">Address</span>
+            <span className="text-[10px] font-bold opacity-40 uppercase">[LOCAL]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
-              <span>Rio de Janeiro, Brasil</span>
-              <span>Disponíveis Globalmente</span>
+              <span>Rio de Janeiro</span>
             </div>
           </div>
 
-          {/* Tagline & Time */}
-          <div className="flex flex-col gap-6 md:items-end md:text-right">
-            <div className="text-[10px] font-bold opacity-40 max-w-[200px] uppercase">
-              PRODUTORA AUDIOVISUAL INDEPENDENTE FOCADA EM NOVAS PERSPECTIVAS.
+          {/* Social */}
+          <div className="flex flex-col gap-6">
+            <span className="text-[10px] font-bold opacity-40 uppercase">[SOCIAL]</span>
+            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
+              <span className="hover:opacity-40 transition-opacity cursor-pointer">Instagram</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer">Vimeo</span>
             </div>
-            <div className="text-[11px] font-bold uppercase">
-              Rio de Janeiro: {time.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
-            </div>
+          </div>
+        </div>
+
+        {/* Legal Footer */}
+        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="text-[9px] opacity-40 font-bold tracking-widest uppercase">
+            © PANOPTICO - Todos os direitos reservados a Panoptico Filmes LTDA | CNPJ: 48.896.739/0001-50
+          </div>
+          <div className="text-[11px] font-bold uppercase opacity-80">
+            Rio de Janeiro: {time.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
           </div>
         </div>
       </div>
@@ -407,7 +569,7 @@ export default function App() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                {currentPage === 'home' ? renderHome() : currentPage === 'highlights' ? renderHighlights() : renderContact()}
+                {currentPage === 'home' ? renderHome() : currentPage === 'publicidade' ? renderCategory('publicidade') : currentPage === 'videoclipe' ? renderCategory('videoclipe') : renderContact()}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -445,17 +607,31 @@ export default function App() {
               </button>
             </motion.div>
 
-            {/* Highlights */}
+            {/* Publicidade */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 4.15 }}
             >
               <button 
-                onClick={() => setCurrentPage('highlights')}
-                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'highlights' ? 'font-bold opacity-100' : 'opacity-60'}`}
+                onClick={() => setCurrentPage('publicidade')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'publicidade' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
-                HIGHLIGHTS
+                PUBLICIDADE
+              </button>
+            </motion.div>
+
+            {/* Videoclipe */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.2 }}
+            >
+              <button 
+                onClick={() => setCurrentPage('videoclipe')}
+                className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'videoclipe' ? 'font-bold opacity-100' : 'opacity-60'}`}
+              >
+                VIDEOCLIPE
               </button>
             </motion.div>
 
