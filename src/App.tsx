@@ -4,8 +4,8 @@
  */
 
 import { motion, AnimatePresence } from "motion/react";
-import { useState, useEffect } from "react";
-import { Github, Twitter, Instagram, Mail, Play } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Github, Twitter, Instagram, Mail, Play, Menu, X } from "lucide-react";
 
 const projects: Array<{
   id: string;
@@ -300,6 +300,43 @@ export default function App() {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
   const [time, setTime] = useState(new Date());
   const [vimeoThumbnails, setVimeoThumbnails] = useState<Record<string, string>>({});
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [formMessage, setFormMessage] = useState('');
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setFormStatus('submitting');
+    
+    try {
+      const subject = encodeURIComponent(`CONTATO SITE: ${formData.subject}`);
+      const body = encodeURIComponent(`NOME: ${formData.name}\nEMAIL: ${formData.email}\n\nMENSAGEM:\n${formData.message}`);
+      
+      // Gmail Compose URL
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=PRODUTORA@PANOPTICOFILMES.COM&su=${subject}&body=${body}`;
+      
+      // Open Gmail in a new tab
+      window.open(gmailUrl, '_blank');
+      
+      setFormStatus('success');
+      setFormMessage('REDIRECIONANDO PARA O GMAIL...');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Reset status after a few seconds
+      setTimeout(() => setFormStatus('idle'), 5000);
+    } catch (error) {
+      setFormStatus('error');
+      setFormMessage('ERRO AO REDIRECIONAR.');
+    }
+  };
 
   useEffect(() => {
     // Fetch Vimeo thumbnails dynamically
@@ -479,7 +516,7 @@ export default function App() {
       <main className="pt-48 pb-32 px-6 md:px-16">
         <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
           <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
-            {categoryType === 'videoclipe' ? 'VIDEOCLIPES / MUSIC VIDEOS' : 'PUBLICIDADE / COMMERCIALS'}
+            {categoryType === 'videoclipe' ? 'VIDEOCLIPES / MUSIC VIDEOS' : 'PUBLICIDADE / FASHION FILM'}
           </div>
         </div>
 
@@ -533,7 +570,7 @@ export default function App() {
 
           <div className="flex flex-col gap-1">
             <div className="text-[11px] uppercase">EMAIL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">PRODUTORA@PANOPTICOFILMES.COM</span></div>
-            <div className="text-[11px] uppercase">TEL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99016-6606</span></div>
+            <div className="text-[11px] uppercase">WHATSAPP: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99016-6606</span></div>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -559,29 +596,70 @@ export default function App() {
 
         {/* Right Column: Contact Form */}
         <div className="md:col-span-7 flex flex-col">
-          <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 mb-8 uppercase">SEND A MESSAGE / CONTATO</div>
-          <form className="flex flex-col gap-8" onSubmit={(e) => e.preventDefault()}>
+          <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 mb-8 uppercase">CONTATO / SEND A MESSAGE</div>
+          <form className="flex flex-col gap-8" onSubmit={handleFormSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col gap-2">
-                <label className="text-[10px] font-bold opacity-40 uppercase">Name / Nome</label>
-                <input type="text" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+                <label className="text-[10px] font-bold opacity-40 uppercase">Nome / Name</label>
+                <input 
+                  type="text" 
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" 
+                />
               </div>
               <div className="flex flex-col gap-2">
                 <label className="text-[10px] font-bold opacity-40 uppercase">Email</label>
-                <input type="email" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+                <input 
+                  type="email" 
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" 
+                />
               </div>
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold opacity-40 uppercase">Subject / Assunto</label>
-              <input type="text" className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" />
+              <label className="text-[10px] font-bold opacity-40 uppercase">Assunto / Subject</label>
+              <input 
+                type="text" 
+                required
+                value={formData.subject}
+                onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase" 
+              />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-bold opacity-40 uppercase">Message / Mensagem</label>
-              <textarea rows={4} className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase resize-none"></textarea>
+              <label className="text-[10px] font-bold opacity-40 uppercase">Mensagem / Message</label>
+              <textarea 
+                rows={4} 
+                required
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="bg-transparent border-b border-[var(--border)] py-2 focus:outline-none focus:border-[var(--text)] transition-colors text-[12px] uppercase resize-none"
+              ></textarea>
             </div>
-            <button className="w-fit mt-4 text-[10px] font-bold tracking-widest border border-[var(--text)] px-8 py-4 hover:bg-[var(--text)] hover:text-[var(--bg)] transition-all uppercase">
-              Send Message / Enviar
-            </button>
+            
+            <div className="flex flex-col gap-4">
+              <button 
+                type="submit"
+                disabled={formStatus === 'submitting'}
+                className="w-fit mt-4 text-[10px] font-bold tracking-widest border border-[var(--text)] px-8 py-4 hover:bg-[var(--text)] hover:text-[var(--bg)] transition-all uppercase disabled:opacity-50"
+              >
+                {formStatus === 'submitting' ? 'Enviando...' : 'Enviar / Send Message'}
+              </button>
+              
+              {formStatus !== 'idle' && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className={`text-[10px] font-bold uppercase tracking-widest ${formStatus === 'success' ? 'text-green-600' : 'text-red-600'}`}
+                >
+                  {formMessage}
+                </motion.div>
+              )}
+            </div>
           </form>
         </div>
       </motion.section>
@@ -605,10 +683,10 @@ export default function App() {
 
           {/* Contact */}
           <div className="flex flex-col gap-6">
-            <span className="text-[10px] font-bold opacity-40 uppercase">[CONTACT]</span>
+            <span className="text-[10px] font-bold opacity-40 uppercase">[CONTATO]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
               <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">PRODUTORA@PANOPTICOFILMES.COM</span>
-              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">(21) 99016-6606</span>
+              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">+55 (21) 99016-6606</span>
             </div>
           </div>
 
@@ -703,15 +781,17 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4 }}
-            className="hidden sm:flex pointer-events-auto cursor-pointer flex-col gap-0.5"
-            onClick={() => setCurrentPage('home')}
+            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
+            onClick={() => {
+              setCurrentPage('home');
+              setIsMobileMenuOpen(false);
+            }}
           >
             <span className="opacity-90 tracking-widest font-bold text-[11px]">PANOPTICO FILMES</span>
           </motion.div>
 
-          {/* Menu Items */}
-          <div className="flex items-center gap-6 md:gap-24 pointer-events-auto">
-            {/* Index / Works */}
+          {/* Desktop Menu Items */}
+          <div className="hidden md:flex items-center gap-24 pointer-events-auto">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -725,7 +805,6 @@ export default function App() {
               </button>
             </motion.div>
 
-            {/* Publicidade */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -739,7 +818,6 @@ export default function App() {
               </button>
             </motion.div>
 
-            {/* Videoclipe */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -753,7 +831,6 @@ export default function App() {
               </button>
             </motion.div>
 
-            {/* Contact */}
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -768,12 +845,22 @@ export default function App() {
             </motion.div>
           </div>
 
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden pointer-events-auto">
+            <button 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 opacity-60 hover:opacity-100 transition-opacity"
+            >
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+
           {/* Theme Toggle */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 4.4 }}
-            className="flex gap-4 pointer-events-auto items-center"
+            className="hidden md:flex gap-4 pointer-events-auto items-center"
           >
             <button 
               onClick={() => setIsDarkMode(false)}
@@ -790,6 +877,59 @@ export default function App() {
           </motion.div>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-0 z-[45] bg-[var(--bg)] flex flex-col transition-colors duration-500"
+          >
+            <div className="flex-grow flex flex-col items-center justify-center gap-6 px-6 pt-20">
+              {['home', 'publicidade', 'videoclipe', 'contact'].map((page, index) => (
+                <motion.button
+                  key={page}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={() => {
+                    setCurrentPage(page as any);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`text-[14px] tracking-[0.4em] font-bold uppercase transition-all ${currentPage === page ? 'opacity-100' : 'opacity-30'}`}
+                >
+                  {page === 'contact' ? 'CONTATO' : page}
+                </motion.button>
+              ))}
+            </div>
+            
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="pb-20 px-12"
+            >
+              <div className="border-t border-[var(--border)] pt-10 flex gap-12 items-center justify-center">
+                <button 
+                  onClick={() => setIsDarkMode(false)}
+                  className={`tracking-[0.3em] text-[11px] font-bold uppercase transition-all ${!isDarkMode ? 'opacity-100' : 'opacity-30'}`}
+                >
+                  LIGHT
+                </button>
+                <button 
+                  onClick={() => setIsDarkMode(true)}
+                  className={`tracking-[0.3em] text-[11px] font-bold uppercase transition-all ${isDarkMode ? 'opacity-100' : 'opacity-30'}`}
+                >
+                  DARK
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Project Detail Modal */}
       <AnimatePresence>
