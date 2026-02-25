@@ -26,6 +26,12 @@ const projects: Array<{
     vimeoHash: "f449db2df9",
     thumbnail: "https://i.vimeocdn.com/video/2124668721-caff6e5a830a5c6a0fe35fada2f292db53b20aa3b2e0a608c3bb68c4199cf7fb-d_1280",
     description: "",
+    gallery: [
+      "https://i.ibb.co/TFKLs3k/Still-2024-12-18-121501-1-90-1.png",
+      "https://i.ibb.co/xKMx6T4t/Still-2024-12-18-121501-1-125-1.png",
+      "https://i.ibb.co/nsJLPS6J/Still-2024-12-18-121501-1-94-1.png",
+      "https://i.ibb.co/RGrCTVHs/Still-2024-12-18-121501-1-60-1.png"
+    ]
   },
   {
     id: "p2",
@@ -50,6 +56,12 @@ const projects: Array<{
     vimeoHash: "efd39deff7",
     thumbnail: "https://i.vimeocdn.com/video/2124645872-c8a0385984eb6ae676b22d612a77dc1fa96ce2db268714bbeb09a04607f43413-d_1280",
     description: "",
+    gallery: [
+      "https://i.ibb.co/99Mvkj1v/Still-2025-09-17-132659-1-10-1.png",
+      "https://i.ibb.co/k2VJgTdH/Still-2025-09-17-132659-1-5-3.png",
+      "https://i.ibb.co/jPjBT9P4/Still-2025-09-17-132659-1-16-1.png",
+      "https://i.ibb.co/jk1BBKWK/Still-2025-09-17-132659-1-76-1.png"
+    ]
   },
   {
     id: "p4",
@@ -59,6 +71,12 @@ const projects: Array<{
     vimeoHash: "4801644608",
     thumbnail: "https://i.vimeocdn.com/video/2124667495-60fa293b14182b77b884ec1379f2b9930861b7f74d64f2dc558f4628ef56ca19-d_1280",
     description: "",
+    gallery: [
+      "https://i.ibb.co/ZzZHJK9Y/V-deo-Mescla-HORIZ-00-00-20-12-Still008.png",
+      "https://i.ibb.co/vxhFdN1p/V-deo-Mescla-HORIZ-00-00-50-20-Still025.png",
+      "https://i.ibb.co/YBYJnDwj/V-deo-Mescla-HORIZ-00-00-04-11-Still001.png",
+      "https://i.ibb.co/3YhLgk9k/V-deo-Mescla-HORIZ-00-00-58-18-Still033.png"
+    ]
   },
   {
     id: "p7",
@@ -67,6 +85,12 @@ const projects: Array<{
     vimeoId: "675329933",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/C3SKtCtb/Screenshot-37.png",
+      "https://i.ibb.co/d4D1gGG3/Screenshot-42.png",
+      "https://i.ibb.co/VcLLBqMv/Screenshot-34.png",
+      "https://i.ibb.co/Q70ynZZd/Screenshot-25.png"
+    ]
   },
   {
     id: "p8",
@@ -76,6 +100,12 @@ const projects: Array<{
     vimeoHash: "985ea1d650",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/d4gcrhm9/Still-2026-02-23-114813-2-26-1.png",
+      "https://i.ibb.co/d0p5Vhkc/Still-2026-02-23-114813-2-24-2.png",
+      "https://i.ibb.co/5W77PpSr/Still-2026-02-23-114813-2-6-1.png",
+      "https://i.ibb.co/XkjN4qyr/Still-2026-02-23-114813-2-4-3.png"
+    ]
   },
   {
     id: "p6",
@@ -85,6 +115,12 @@ const projects: Array<{
     vimeoHash: "fa9bba8ff9",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/BKgr0VBn/Still-2025-06-18-145719-3-52-1.jpg",
+      "https://i.ibb.co/QvymsSSS/Still-2025-06-18-145719-3-82-1.jpg",
+      "https://i.ibb.co/VWnZqywx/Still-2025-06-18-145719-3-53-1.jpg",
+      "https://i.ibb.co/dwNw0s5V/Still-2025-06-18-145719-3-83-1.jpg"
+    ]
   },
   {
     id: "p13",
@@ -94,6 +130,12 @@ const projects: Array<{
     vimeoHash: "344fc89908",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/hx9ySvkJ/Still-2025-10-13-175722-1-1-2-16-1-2.png",
+      "https://i.ibb.co/Xr88W9r3/Still-2025-10-13-175722-10-3-1-1.png",
+      "https://i.ibb.co/vv40c88R/Still-2025-10-13-175722-4-82-1.png",
+      "https://i.ibb.co/jxgqYP9/Still-2025-11-10-195821-3-1-3-1.png"
+    ]
   },
   {
     id: "p14",
@@ -103,6 +145,12 @@ const projects: Array<{
     vimeoHash: "ebe547a74b",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/Gvg6LcHR/Sequence-01-00-03-25-00-Still018.jpg",
+      "https://i.ibb.co/fzTWYLDR/Sequence-01-00-01-22-14-Still008-2.jpg",
+      "https://i.ibb.co/d418KkhV/Sequence-01-00-00-37-08-Still007.jpg",
+      "https://i.ibb.co/N8wtpSY/Sequence-01-00-01-44-18-Still014-2.jpg"
+    ]
   },
   {
     id: "p5",
@@ -112,6 +160,12 @@ const projects: Array<{
     vimeoHash: "7d05654e07",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/y3KfhxL/Still-2026-01-04-123250-1-27-1.png",
+      "https://i.ibb.co/6cTstFP3/Still-2026-01-04-123250-1-8-1.png",
+      "https://i.ibb.co/k6sfz3TP/Still-2026-01-04-123250-4-1-2.png",
+      "https://i.ibb.co/Z1MtXQBb/Still-2026-01-04-123250-4-2-1.png"
+    ]
   },
   {
     id: "p15",
@@ -121,6 +175,12 @@ const projects: Array<{
     vimeoHash: "17925b4d69",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/VYYWq7y2/Main-TL-00-00-11-04-Still003.png",
+      "https://i.ibb.co/xK547hJH/Main-TL-00-02-15-22-Still044.png",
+      "https://i.ibb.co/9kzmpPnp/Main-TL-00-01-42-09-Still035.png",
+      "https://i.ibb.co/ynf4WVgW/Main-TL-00-01-19-19-Still028.png"
+    ]
   },
   {
     id: "p16",
@@ -130,6 +190,12 @@ const projects: Array<{
     vimeoHash: "e91af12e3a",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/p681Xnpt/Outra-Hora-30-1-14.png",
+      "https://i.ibb.co/99NwNYT8/Outra-Hora-30-1-2.png",
+      "https://i.ibb.co/mCwPNYBP/Outra-Hora-30-1-10.png",
+      "https://i.ibb.co/Qv9c1Hdd/Outra-Hora-30-1-7.png"
+    ]
   },
   {
     id: "p17",
@@ -139,6 +205,12 @@ const projects: Array<{
     vimeoHash: "cc62328569",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/ycFJrwBC/Main-TL-FInal-v2-x1634-00-01-51-15-Still039.jpg",
+      "https://i.ibb.co/ymLjLPJg/Main-TL-FInal-v2-x1634-00-00-07-19-Still003.jpg",
+      "https://i.ibb.co/nMDMR8TS/Main-TL-FInal-v2-x1634-00-00-26-00-Still011.jpg",
+      "https://i.ibb.co/N6r9dRJP/Main-TL-FInal-v2-x1634-00-02-03-22-Still044.jpg"
+    ]
   },
   {
     id: "p18",
@@ -148,6 +220,12 @@ const projects: Array<{
     vimeoHash: "26726dd11c",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/P8mpKgW/Screenshot-43.png",
+      "https://i.ibb.co/3YRHjHNR/Screenshot-48.png",
+      "https://i.ibb.co/5hJPLLQk/Screenshot-29.png",
+      "https://i.ibb.co/4Rg3704w/Screenshot-34-1.png"
+    ]
   },
   {
     id: "p19",
@@ -156,6 +234,12 @@ const projects: Array<{
     vimeoId: "954215639",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/qLwskwHg/Main-TL5-00-00-44-14-Still012.png",
+      "https://i.ibb.co/1f8BHS2m/Main-TL5-00-01-08-09-Still024.png",
+      "https://i.ibb.co/gMccgYn5/Main-TL5-00-00-21-07-Still001.png",
+      "https://i.ibb.co/9mK2cx7H/Main-TL5-00-02-43-06-Still048.png"
+    ]
   },
   {
     id: "p9",
@@ -165,6 +249,12 @@ const projects: Array<{
     vimeoHash: "c3c23b60ba",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/x8RpbH6X/still-1-15-2.png",
+      "https://i.ibb.co/99h0y6rz/Still-2024-11-17-163948-1-14-1.png",
+      "https://i.ibb.co/4nGVdQcJ/still2-2-5-1.png",
+      "https://i.ibb.co/DDwsy0Zc/Still-2024-11-17-163948-1-14-3.png"
+    ]
   },
   {
     id: "p10",
@@ -174,6 +264,12 @@ const projects: Array<{
     vimeoHash: "3aae8bfa69",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/GvKP5G4v/V-deos-v2-00-01-45-13-Still072.png",
+      "https://i.ibb.co/C5b2dn7R/V-deos-v2-00-00-50-21-Still057.png",
+      "https://i.ibb.co/7tXNF2Tn/V-deos-v2-00-00-43-03-Still052.png",
+      "https://i.ibb.co/67K8pjcG/V-deos-v2-00-00-04-00-Still037.png"
+    ]
   },
   {
     id: "p11",
@@ -224,9 +320,25 @@ export default function App() {
         }
       }
       setVimeoThumbnails(prev => ({ ...prev, ...thumbs }));
+      
+      // Preload the newly fetched thumbnails
+      Object.values(thumbs).forEach(url => {
+        const img = new Image();
+        img.src = url;
+      });
     };
 
     fetchThumbnails();
+
+    // Preload gallery images
+    projects.forEach(project => {
+      if (project.gallery) {
+        project.gallery.forEach(url => {
+          const img = new Image();
+          img.src = url;
+        });
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -735,21 +847,18 @@ export default function App() {
                     <div className="text-[10px] font-bold tracking-[0.3em] opacity-40">STILLS / GALERIA</div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {selectedProject.gallery.map((img, idx) => (
-                        <motion.div
+                        <div
                           key={idx}
-                          initial={{ opacity: 0, y: 20 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.8, delay: idx * 0.1 }}
                           className="w-full overflow-hidden bg-black/5"
                         >
                           <img
                             src={img}
                             alt={`${selectedProject.title} still ${idx + 1}`}
-                            className="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out hover:scale-[1.05]"
+                            className="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 transition-all duration-500 ease-in-out hover:scale-[1.05]"
                             referrerPolicy="no-referrer"
+                            loading="eager"
                           />
-                        </motion.div>
+                        </div>
                       ))}
                     </div>
                   </div>
