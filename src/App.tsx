@@ -743,10 +743,10 @@ export default function App() {
               <img 
                 src="https://i.ibb.co/R47dfnNV/Untitled-design.png" 
                 alt="PANOPTICO FILMES" 
-                className="w-40 h-40 object-contain grayscale opacity-90"
+                className="w-24 h-24 md:w-40 md:h-40 object-contain grayscale opacity-90"
                 referrerPolicy="no-referrer"
               />
-              <div className="typewriter-text tracking-[0.8em] text-[14px]">
+              <div className="typewriter-text tracking-[0.4em] md:tracking-[0.8em] text-[10px] md:text-[14px]">
                 PANOPTICO FILMES
               </div>
             </motion.div>
