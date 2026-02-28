@@ -406,25 +406,9 @@ export default function App() {
         }
       }
       setVimeoThumbnails(prev => ({ ...prev, ...thumbs }));
-      
-      // Preload the newly fetched thumbnails
-      Object.values(thumbs).forEach(url => {
-        const img = new Image();
-        img.src = url;
-      });
     };
 
     fetchThumbnails();
-
-    // Preload gallery images
-    projects.forEach(project => {
-      if (project.gallery) {
-        project.gallery.forEach(url => {
-          const img = new Image();
-          img.src = url;
-        });
-      }
-    });
   }, []);
 
   useEffect(() => {
@@ -496,8 +480,9 @@ export default function App() {
                 <img 
                   src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-[1.02]"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               )}
 
@@ -508,8 +493,9 @@ export default function App() {
                       src={`https://player.vimeo.com/video/${project.vimeoId}?h=${project.vimeoHash || ''}&autoplay=1&title=0&byline=0&portrait=0`}
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
-                      className="absolute top-0 left-0 w-full h-full"
+                      className="absolute top-0 left-0 w-full h-full scale-[1.08]"
                       title={project.title}
+                      loading="lazy"
                     ></iframe>
                   )}
                 </div>
@@ -519,7 +505,7 @@ export default function App() {
                     <video
                       autoPlay
                       controls
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover scale-[1.08]"
                     >
                       <source src={project.video} type="video/mp4" />
                     </video>
@@ -585,8 +571,9 @@ export default function App() {
                 <img 
                   src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
                   alt="" 
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-105"
+                  className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-white text-[10px] font-bold tracking-widest border border-white/40 px-4 py-2">VER DETALHES</span>
@@ -1022,10 +1009,11 @@ export default function App() {
                   >
                     <iframe
                       src={`https://player.vimeo.com/video/${selectedProject.vimeoId}?h=${selectedProject.vimeoHash}&autoplay=1&title=0&byline=0&portrait=0`}
-                      className="w-full h-full"
+                      className="w-full h-full scale-[1.08]"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
                       allowFullScreen
+                      loading="lazy"
                     ></iframe>
                   </motion.div>
                 )}
@@ -1043,9 +1031,9 @@ export default function App() {
                           <img
                             src={img}
                             alt={`${selectedProject.title} still ${idx + 1}`}
-                            className="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[1.05]"
+                            className="w-full aspect-[16/9] object-cover scale-[1.08] grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-500 ease-in-out hover:scale-[1.12] active:scale-[1.12]"
                             referrerPolicy="no-referrer"
-                            loading="eager"
+                            loading="lazy"
                           />
                         </div>
                       ))}
