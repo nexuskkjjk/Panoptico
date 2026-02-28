@@ -370,6 +370,11 @@ export default function App() {
   };
 
   useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
     // Fetch Vimeo thumbnails dynamically
     const fetchThumbnails = async () => {
       const thumbs: Record<string, string> = {};
@@ -453,12 +458,7 @@ export default function App() {
   }, [loading, currentPage]);
 
   const renderHome = () => (
-    <main className="pt-20 md:pt-32 pb-32 px-6 md:px-16">
-      {/* Project List */}
-      <div className="max-w-[1400px] mx-auto mb-8 flex justify-between items-center border-b border-[var(--border)] pb-4">
-        <div className="text-[10px] font-bold tracking-[0.3em] opacity-40 uppercase">SHOWCASE</div>
-      </div>
-
+    <main className="pt-12 md:pt-20 pb-32 px-6 md:px-16">
       <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-32">
         {projects.slice(0, 8).map((project, index) => (
           <motion.div
@@ -546,13 +546,7 @@ export default function App() {
 
     return (
       <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16">
-        <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-8">
-          <button 
-            onClick={() => navigateTo('home')}
-            className="w-fit text-[10px] opacity-40 hover:opacity-100 transition-opacity tracking-[0.2em] font-bold border border-[var(--border)] px-4 py-2 hover:bg-[var(--text)] hover:text-[var(--bg)] uppercase"
-          >
-            ← VOLTAR / BACK
-          </button>
+        <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
           <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
             {categoryType === 'videoclipe' ? 'VIDEOCLIPES' : 'PUBLICIDADE / FASHION FILM'}
           </div>
@@ -594,14 +588,6 @@ export default function App() {
 
   const renderContact = () => (
     <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16 font-sans">
-      <div className="max-w-[1400px] mx-auto mb-12">
-        <button 
-          onClick={() => navigateTo('home')}
-          className="w-fit text-[10px] opacity-40 hover:opacity-100 transition-opacity tracking-[0.2em] font-bold border border-[var(--border)] px-4 py-2 hover:bg-[var(--text)] hover:text-[var(--bg)] uppercase"
-        >
-          ← VOLTAR / BACK
-        </button>
-      </div>
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
