@@ -83,7 +83,7 @@ const projects: Array<{
     title: "L7NNON — OUTRO LUGAR",
     category: "VIDEOCLIPE",
     vimeoId: "675329933",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/C3SKtCtb/Screenshot-37.png",
     description: "",
     gallery: [
       "https://i.ibb.co/C3SKtCtb/Screenshot-37.png",
@@ -98,7 +98,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1167841743",
     vimeoHash: "985ea1d650",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/d4gcrhm9/Still-2026-02-23-114813-2-26-1.png",
     description: "",
     gallery: [
       "https://i.ibb.co/d4gcrhm9/Still-2026-02-23-114813-2-26-1.png",
@@ -113,7 +113,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1166877883",
     vimeoHash: "fa9bba8ff9",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/BKgr0VBn/Still-2025-06-18-145719-3-52-1.jpg",
     description: "",
     gallery: [
       "https://i.ibb.co/BKgr0VBn/Still-2025-06-18-145719-3-52-1.jpg",
@@ -128,7 +128,7 @@ const projects: Array<{
     category: "VISUALIZER",
     vimeoId: "1166779536",
     vimeoHash: "344fc89908",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/hx9ySvkJ/Still-2025-10-13-175722-1-1-2-16-1-2.png",
     description: "",
     gallery: [
       "https://i.ibb.co/hx9ySvkJ/Still-2025-10-13-175722-1-1-2-16-1-2.png",
@@ -143,7 +143,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "503641665",
     vimeoHash: "ebe547a74b",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/Gvg6LcHR/Sequence-01-00-03-25-00-Still018.jpg",
     description: "",
     gallery: [
       "https://i.ibb.co/Gvg6LcHR/Sequence-01-00-03-25-00-Still018.jpg",
@@ -158,7 +158,7 @@ const projects: Array<{
     category: "VISUALIZER",
     vimeoId: "1166793032",
     vimeoHash: "7d05654e07",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/y3KfhxL/Still-2026-01-04-123250-1-27-1.png",
     description: "",
     gallery: [
       "https://i.ibb.co/y3KfhxL/Still-2026-01-04-123250-1-27-1.png",
@@ -173,7 +173,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "676467610",
     vimeoHash: "17925b4d69",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/VYYWq7y2/Main-TL-00-00-11-04-Still003.png",
     description: "",
     gallery: [
       "https://i.ibb.co/VYYWq7y2/Main-TL-00-00-11-04-Still003.png",
@@ -188,7 +188,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1167850997",
     vimeoHash: "e91af12e3a",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/p681Xnpt/Outra-Hora-30-1-14.png",
     description: "",
     gallery: [
       "https://i.ibb.co/p681Xnpt/Outra-Hora-30-1-14.png",
@@ -203,7 +203,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "821890935",
     vimeoHash: "cc62328569",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/ycFJrwBC/Main-TL-FInal-v2-x1634-00-01-51-15-Still039.jpg",
     description: "",
     gallery: [
       "https://i.ibb.co/ycFJrwBC/Main-TL-FInal-v2-x1634-00-01-51-15-Still039.jpg",
@@ -218,7 +218,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "748221186",
     vimeoHash: "26726dd11c",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/P8mpKgW/Screenshot-43.png",
     description: "",
     gallery: [
       "https://i.ibb.co/P8mpKgW/Screenshot-43.png",
@@ -232,7 +232,7 @@ const projects: Array<{
     title: "SANXA — A MENTE MESTRA",
     category: "VIDEOCLIPE",
     vimeoId: "954215639",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/qLwskwHg/Main-TL5-00-00-44-14-Still012.png",
     description: "",
     gallery: [
       "https://i.ibb.co/qLwskwHg/Main-TL5-00-00-44-14-Still012.png",
@@ -247,7 +247,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1166880173",
     vimeoHash: "c3c23b60ba",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/x8RpbH6X/still-1-15-2.png",
     description: "",
     gallery: [
       "https://i.ibb.co/x8RpbH6X/still-1-15-2.png",
@@ -262,7 +262,7 @@ const projects: Array<{
     category: "FASHION FILM",
     vimeoId: "1166870300",
     vimeoHash: "3aae8bfa69",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/GvKP5G4v/V-deos-v2-00-01-45-13-Still072.png",
     description: "",
     gallery: [
       "https://i.ibb.co/GvKP5G4v/V-deos-v2-00-01-45-13-Still072.png",
@@ -277,7 +277,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1166868756",
     vimeoHash: "3189a7bcff",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/S4Q5HYzp/Still-2026-02-24-215813-1-1-6.png",
     description: "",
     gallery: [
       "https://i.ibb.co/S4Q5HYzp/Still-2026-02-24-215813-1-1-6.png",
@@ -292,7 +292,7 @@ const projects: Array<{
     category: "FASHION FILM",
     vimeoId: "457119275",
     vimeoHash: "045fa16b88",
-    thumbnail: "",
+    thumbnail: "https://i.ibb.co/7cNBcDP/Still-2026-02-24-215813-1-1-8.png",
     description: "",
     gallery: [
       "https://i.ibb.co/7cNBcDP/Still-2026-02-24-215813-1-1-8.png",
@@ -477,13 +477,15 @@ export default function App() {
             >
               {/* Thumbnail / Poster - Always visible until video is active */}
               {activeVideo !== project.id && (
-                <img 
-                  src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
-                  alt="" 
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
+                (project.thumbnail || vimeoThumbnails[project.id]) && (
+                  <img 
+                    src={project.thumbnail || vimeoThumbnails[project.id]} 
+                    alt="" 
+                    className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                )
               )}
 
               {project.vimeoId ? (
@@ -568,13 +570,15 @@ export default function App() {
                 className="relative aspect-video overflow-hidden bg-neutral-50 rounded-none cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
-                <img 
-                  src={project.thumbnail || vimeoThumbnails[project.id] || "https://picsum.photos/seed/vimeo/1920/1080"} 
-                  alt="" 
-                  className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
+                {(project.thumbnail || vimeoThumbnails[project.id]) && (
+                  <img 
+                    src={project.thumbnail || vimeoThumbnails[project.id]} 
+                    alt="" 
+                    className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                )}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="text-white text-[10px] font-bold tracking-widest border border-white/40 px-4 py-2">VER DETALHES</span>
                 </div>
@@ -810,38 +814,43 @@ export default function App() {
       </AnimatePresence>
 
       {!loading && (
-        <div className="flex-grow flex flex-col">
-          <div className="flex-grow">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentPage}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                {currentPage === 'home' ? renderHome() : currentPage === 'publicidade' ? renderCategory('publicidade') : currentPage === 'videoclipe' ? renderCategory('videoclipe') : renderContact()}
-              </motion.div>
-            </AnimatePresence>
+        <>
+          <div className="flex-grow flex flex-col">
+            <div className="flex-grow">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentPage}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  {currentPage === 'home' ? renderHome() : currentPage === 'publicidade' ? renderCategory('publicidade') : currentPage === 'videoclipe' ? renderCategory('videoclipe') : renderContact()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            {renderFooter()}
           </div>
-          {renderFooter()}
-        </div>
-      )}
 
-      {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 px-4 pt-6 pb-4 md:px-8 bg-transparent pointer-events-none">
+          <nav className="absolute top-0 left-0 right-0 z-50 px-4 pt-6 pb-4 md:px-8 bg-transparent pointer-events-none">
         <div className="max-w-full mx-auto flex justify-between items-center gap-8">
           {/* Brand */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
+            className="pointer-events-auto cursor-pointer flex items-center gap-3"
             onClick={() => {
               navigateTo('home');
               setIsMobileMenuOpen(false);
             }}
           >
+            <img 
+              src="https://i.ibb.co/R47dfnNV/Untitled-design.png" 
+              alt="Logo" 
+              className="w-6 h-6 md:w-8 md:h-8 object-contain grayscale"
+              referrerPolicy="no-referrer"
+            />
             <span className="opacity-90 tracking-widest font-bold text-[14px] md:text-[11px]">PANOPTICO FILMES</span>
           </motion.div>
 
@@ -985,6 +994,8 @@ export default function App() {
           </motion.div>
         )}
       </AnimatePresence>
+      </>
+      )}
 
       {/* Project Detail Modal */}
       <AnimatePresence>
