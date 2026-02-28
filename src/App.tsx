@@ -458,7 +458,12 @@ export default function App() {
   }, [loading, currentPage]);
 
   const renderHome = () => (
-    <main className="pt-12 md:pt-20 pb-32 px-6 md:px-16">
+    <main className="pt-24 md:pt-36 pb-32 px-6 md:px-16">
+      <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
+        <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
+          SHOWCASE
+        </div>
+      </div>
       <div id="trabalhos" className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-24 max-w-[1400px] mx-auto scroll-mt-32">
         {projects.slice(0, 8).map((project, index) => (
           <motion.div
@@ -545,7 +550,7 @@ export default function App() {
     });
 
     return (
-      <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16">
+      <main className="pt-24 md:pt-36 pb-32 px-6 md:px-16">
         <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
           <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
             {categoryType === 'videoclipe' ? 'VIDEOCLIPES' : 'PUBLICIDADE / FASHION FILM'}
@@ -587,7 +592,7 @@ export default function App() {
   };
 
   const renderContact = () => (
-    <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16 font-sans">
+    <main className="pt-24 md:pt-36 pb-32 px-6 md:px-16 font-sans">
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -812,7 +817,7 @@ export default function App() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 4 }}
+            transition={{ duration: 1 }}
             className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
             onClick={() => {
               navigateTo('home');
@@ -827,7 +832,7 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 4.1 }}
+              transition={{ duration: 1 }}
             >
               <button 
                 onClick={() => navigateTo('home')}
@@ -840,7 +845,7 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 4.15 }}
+              transition={{ duration: 1 }}
             >
               <button 
                 onClick={() => navigateTo('publicidade')}
@@ -853,7 +858,7 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 4.2 }}
+              transition={{ duration: 1 }}
             >
               <button 
                 onClick={() => navigateTo('videoclipe')}
@@ -866,7 +871,7 @@ export default function App() {
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 4.3 }}
+              transition={{ duration: 1 }}
             >
               <button 
                 onClick={() => navigateTo('contact')}
@@ -891,7 +896,7 @@ export default function App() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 4.4 }}
+            transition={{ duration: 1 }}
             className="hidden md:flex gap-4 pointer-events-auto items-center"
           >
             <button 
