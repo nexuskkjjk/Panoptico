@@ -36,7 +36,7 @@ const projects: Array<{
   {
     id: "p2",
     title: "KENNER — X-LEVEL",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "956764521",
     vimeoHash: "9d854fdf6e",
     thumbnail: "https://i.vimeocdn.com/video/1868507147-dae8263559cadec8dfafe21118c9e48111e53a26df538ca319d92e3e94eae1dc-d_1280",
@@ -51,7 +51,7 @@ const projects: Array<{
   {
     id: "p3",
     title: "LOLA COSMETICS — BOSSA",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "1166865336",
     vimeoHash: "efd39deff7",
     thumbnail: "https://i.vimeocdn.com/video/2124645872-c8a0385984eb6ae676b22d612a77dc1fa96ce2db268714bbeb09a04607f43413-d_1280",
@@ -95,7 +95,7 @@ const projects: Array<{
   {
     id: "p8",
     title: "LOLA COSMETICS — A FÓRMULA",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "1167841743",
     vimeoHash: "985ea1d650",
     thumbnail: "",
@@ -125,7 +125,7 @@ const projects: Array<{
   {
     id: "p13",
     title: "JOVEMD! — SAFE",
-    category: "VISUALIZER",
+    category: "VIDEOCLIPE",
     vimeoId: "1166779536",
     vimeoHash: "344fc89908",
     thumbnail: "",
@@ -155,7 +155,7 @@ const projects: Array<{
   {
     id: "p5",
     title: "JOVEMD! — SENADOR",
-    category: "VISUALIZER",
+    category: "VIDEOCLIPE",
     vimeoId: "1166793032",
     vimeoHash: "7d05654e07",
     thumbnail: "",
@@ -244,7 +244,7 @@ const projects: Array<{
   {
     id: "p9",
     title: "GIORGIO ARMANI — BAJAU",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "1166880173",
     vimeoHash: "c3c23b60ba",
     thumbnail: "",
@@ -259,7 +259,7 @@ const projects: Array<{
   {
     id: "p10",
     title: "ATEEN — 30 ANOS",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "1166870300",
     vimeoHash: "3aae8bfa69",
     thumbnail: "",
@@ -274,7 +274,7 @@ const projects: Array<{
   {
     id: "p11",
     title: "LOLA COSMETICS — PURPLE",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "1166868756",
     vimeoHash: "3189a7bcff",
     thumbnail: "",
@@ -283,7 +283,7 @@ const projects: Array<{
   {
     id: "p12",
     title: "BLUEMAN",
-    category: "COMERCIAL",
+    category: "PUBLICIDADE",
     vimeoId: "457119275",
     vimeoHash: "045fa16b88",
     thumbnail: "",
@@ -301,8 +301,47 @@ export default function App() {
   const [time, setTime] = useState(new Date());
   const [vimeoThumbnails, setVimeoThumbnails] = useState<Record<string, string>>({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  // Form State
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
+  // Navigation with "reload" effect
+  const navigateTo = (page: 'home' | 'publicidade' | 'videoclipe' | 'contact') => {
+    if (page === currentPage) return;
+    window.location.hash = page;
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '') as any;
+      const validPages = ['home', 'publicidade', 'videoclipe', 'contact'];
+      const targetPage = validPages.includes(hash) ? hash : 'home';
+      
+      if (targetPage !== currentPage) {
+        // Trigger "reload" effect
+        setLoading(true);
+        setCurrentPage(targetPage);
+        window.scrollTo(0, 0);
+        
+        // Shorter loading for navigation
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 1200);
+        return () => clearTimeout(timer);
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    
+    // Handle initial load from hash
+    if (isInitialLoad) {
+      const hash = window.location.hash.replace('#', '') as any;
+      if (hash && ['home', 'publicidade', 'videoclipe', 'contact'].includes(hash)) {
+        setCurrentPage(hash);
+      }
+      setIsInitialLoad(false);
+    }
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [currentPage, isInitialLoad]);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -346,13 +385,14 @@ export default function App() {
         if (project.vimeoId && !project.thumbnail) {
           try {
             const response = await fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${project.vimeoId}`);
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
-            if (data.thumbnail_url) {
+            if (data && data.thumbnail_url) {
               // Replace the size in the URL to get medium res for faster loading
               thumbs[project.id] = data.thumbnail_url.replace(/_[0-9x]+/, '_640');
             }
           } catch (error) {
-            console.error(`Error fetching thumbnail for ${project.vimeoId}:`, error);
+            console.warn(`Could not fetch thumbnail for Vimeo ID ${project.vimeoId}. It might be private or deleted.`);
           }
         }
       }
@@ -411,7 +451,7 @@ export default function App() {
     const timer = setTimeout(() => {
       setLoading(false);
       typingAudio.pause();
-    }, 4500);
+    }, isInitialLoad ? 4500 : 1200);
 
     return () => {
       clearTimeout(timer);
@@ -508,15 +548,21 @@ export default function App() {
 
   const renderCategory = (categoryType: 'publicidade' | 'videoclipe') => {
     const filteredProjects = projects.filter(p => {
-      if (categoryType === 'videoclipe') return p.category === 'VIDEOCLIPE' || p.category === 'VISUALIZER';
-      return p.category === 'COMERCIAL' || p.category === 'FASHION FILM';
+      if (categoryType === 'videoclipe') return p.category === 'VIDEOCLIPE';
+      return p.category === 'PUBLICIDADE' || p.category === 'FASHION FILM';
     });
 
     return (
       <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16">
-        <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
+        <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-8">
+          <button 
+            onClick={() => navigateTo('home')}
+            className="w-fit text-[10px] opacity-40 hover:opacity-100 transition-opacity tracking-[0.2em] font-bold border border-[var(--border)] px-4 py-2 hover:bg-[var(--text)] hover:text-[var(--bg)] uppercase"
+          >
+            ← VOLTAR / BACK
+          </button>
           <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
-            {categoryType === 'videoclipe' ? 'VIDEOCLIPES / MUSIC VIDEOS' : 'PUBLICIDADE / FASHION FILM'}
+            {categoryType === 'videoclipe' ? 'VIDEOCLIPES' : 'PUBLICIDADE / FASHION FILM'}
           </div>
         </div>
 
@@ -556,6 +602,14 @@ export default function App() {
 
   const renderContact = () => (
     <main className="pt-24 md:pt-48 pb-32 px-6 md:px-16 font-sans">
+      <div className="max-w-[1400px] mx-auto mb-12">
+        <button 
+          onClick={() => navigateTo('home')}
+          className="w-fit text-[10px] opacity-40 hover:opacity-100 transition-opacity tracking-[0.2em] font-bold border border-[var(--border)] px-4 py-2 hover:bg-[var(--text)] hover:text-[var(--bg)] uppercase"
+        >
+          ← VOLTAR / BACK
+        </button>
+      </div>
       <motion.section 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -674,10 +728,10 @@ export default function App() {
           <div className="flex flex-col gap-6">
             <span className="text-[10px] font-bold opacity-40 uppercase">[SITEMAP]</span>
             <div className="flex flex-col gap-2 text-[11px] font-bold">
-              <button onClick={() => setCurrentPage('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
-              <button onClick={() => setCurrentPage('publicidade')} className="w-fit hover:opacity-40 transition-opacity uppercase">Publicidade</button>
-              <button onClick={() => setCurrentPage('videoclipe')} className="w-fit hover:opacity-40 transition-opacity uppercase">Videoclipe</button>
-              <button onClick={() => setCurrentPage('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contact</button>
+              <button onClick={() => navigateTo('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
+              <button onClick={() => navigateTo('publicidade')} className="w-fit hover:opacity-40 transition-opacity uppercase">Publicidade</button>
+              <button onClick={() => navigateTo('videoclipe')} className="w-fit hover:opacity-40 transition-opacity uppercase">Videoclipe</button>
+              <button onClick={() => navigateTo('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contato</button>
             </div>
           </div>
 
@@ -783,7 +837,7 @@ export default function App() {
             transition={{ delay: 4 }}
             className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
             onClick={() => {
-              setCurrentPage('home');
+              navigateTo('home');
               setIsMobileMenuOpen(false);
             }}
           >
@@ -798,7 +852,7 @@ export default function App() {
               transition={{ delay: 4.1 }}
             >
               <button 
-                onClick={() => setCurrentPage('home')}
+                onClick={() => navigateTo('home')}
                 className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'home' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
                 HOME
@@ -811,7 +865,7 @@ export default function App() {
               transition={{ delay: 4.15 }}
             >
               <button 
-                onClick={() => setCurrentPage('publicidade')}
+                onClick={() => navigateTo('publicidade')}
                 className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'publicidade' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
                 PUBLICIDADE
@@ -824,7 +878,7 @@ export default function App() {
               transition={{ delay: 4.2 }}
             >
               <button 
-                onClick={() => setCurrentPage('videoclipe')}
+                onClick={() => navigateTo('videoclipe')}
                 className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'videoclipe' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
                 VIDEOCLIPE
@@ -837,7 +891,7 @@ export default function App() {
               transition={{ delay: 4.3 }}
             >
               <button 
-                onClick={() => setCurrentPage('contact')}
+                onClick={() => navigateTo('contact')}
                 className={`hover:opacity-40 transition-opacity tracking-[0.2em] text-[10px] ${currentPage === 'contact' ? 'font-bold opacity-100' : 'opacity-60'}`}
               >
                 CONTATO
@@ -896,7 +950,7 @@ export default function App() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                   onClick={() => {
-                    setCurrentPage(page as any);
+                    navigateTo(page as any);
                     setIsMobileMenuOpen(false);
                   }}
                   className={`text-[14px] tracking-[0.4em] font-bold uppercase transition-all ${currentPage === page ? 'opacity-100' : 'opacity-30'}`}
