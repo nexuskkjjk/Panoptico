@@ -125,7 +125,7 @@ const projects: Array<{
   {
     id: "p13",
     title: "JOVEMD! — SAFE",
-    category: "VIDEOCLIPE",
+    category: "VISUALIZER",
     vimeoId: "1166779536",
     vimeoHash: "344fc89908",
     thumbnail: "",
@@ -155,7 +155,7 @@ const projects: Array<{
   {
     id: "p5",
     title: "JOVEMD! — SENADOR",
-    category: "VIDEOCLIPE",
+    category: "VISUALIZER",
     vimeoId: "1166793032",
     vimeoHash: "7d05654e07",
     thumbnail: "",
@@ -259,7 +259,7 @@ const projects: Array<{
   {
     id: "p10",
     title: "ATEEN — 30 ANOS",
-    category: "PUBLICIDADE",
+    category: "FASHION FILM",
     vimeoId: "1166870300",
     vimeoHash: "3aae8bfa69",
     thumbnail: "",
@@ -289,7 +289,7 @@ const projects: Array<{
   {
     id: "p12",
     title: "BLUEMAN",
-    category: "PUBLICIDADE",
+    category: "FASHION FILM",
     vimeoId: "457119275",
     vimeoHash: "045fa16b88",
     thumbnail: "",
@@ -543,7 +543,7 @@ export default function App() {
 
   const renderCategory = (categoryType: 'publicidade' | 'videoclipe') => {
     const filteredProjects = projects.filter(p => {
-      if (categoryType === 'videoclipe') return p.category === 'VIDEOCLIPE';
+      if (categoryType === 'videoclipe') return p.category === 'VIDEOCLIPE' || p.category === 'VISUALIZER';
       return p.category === 'PUBLICIDADE' || p.category === 'FASHION FILM';
     });
 
@@ -551,7 +551,7 @@ export default function App() {
       <main className="pt-24 md:pt-36 pb-32 px-6 md:px-16">
         <div className="max-w-[1400px] mx-auto mb-16 flex flex-col gap-4">
           <div className="text-[10px] font-bold tracking-[0.4em] opacity-40 uppercase">
-            {categoryType === 'videoclipe' ? 'VIDEOCLIPES' : 'PUBLICIDADE / FASHION FILM'}
+            {categoryType === 'videoclipe' ? 'VIDEOCLIPE' : 'PUBLICIDADE / FASHION FILM'}
           </div>
         </div>
 
@@ -606,7 +606,17 @@ export default function App() {
 
           <div className="flex flex-col gap-1">
             <div className="text-[11px] uppercase">EMAIL: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">PRODUTORA@PANOPTICOFILMES.COM</span></div>
-            <div className="text-[11px] uppercase">WHATSAPP: <span className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all">+55 21 99016-6606</span></div>
+            <div className="text-[11px] uppercase flex items-center gap-2">
+              WHATSAPP: 
+              <a 
+                href="https://wa.me/5521990166606" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="underline decoration-[var(--text)]/20 underline-offset-4 cursor-pointer hover:opacity-100 transition-all"
+              >
+                +55 21 99016-6606
+              </a>
+            </div>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -617,6 +627,7 @@ export default function App() {
           <div className="flex gap-4 text-[11px] font-bold">
             <a href="https://www.instagram.com/PANOPTICO.FILMES" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">INSTAGRAM</a>
             <a href="https://vimeo.com/panopticofilmes" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">VIMEO</a>
+            <a href="https://wa.me/5521990166606" target="_blank" rel="noopener noreferrer" className="cursor-pointer hover:opacity-40 transition-opacity underline decoration-[var(--text)]/20 underline-offset-4">WHATSAPP</a>
           </div>
 
           {/* Clients Section */}
@@ -705,49 +716,57 @@ export default function App() {
   const renderFooter = () => (
     <footer className="bg-[var(--bg)] text-[var(--text)] pt-32 pb-12 px-6 md:px-16 font-sans border-t border-[var(--border)] transition-colors duration-500">
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-16 md:gap-8 mb-16">
+        <div className="flex flex-col md:flex-row justify-between gap-16 md:gap-8 mb-16 text-center md:text-left">
           {/* Sitemap */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 items-center md:items-start">
             <span className="text-[10px] font-bold opacity-40 uppercase">[SITEMAP]</span>
-            <div className="flex flex-col gap-2 text-[11px] font-bold">
-              <button onClick={() => navigateTo('home')} className="w-fit hover:opacity-40 transition-opacity uppercase">Home</button>
-              <button onClick={() => navigateTo('publicidade')} className="w-fit hover:opacity-40 transition-opacity uppercase">Publicidade</button>
-              <button onClick={() => navigateTo('videoclipe')} className="w-fit hover:opacity-40 transition-opacity uppercase">Videoclipe</button>
-              <button onClick={() => navigateTo('contact')} className="w-fit hover:opacity-40 transition-opacity uppercase">Contato</button>
+            <div className="flex flex-col gap-2 text-[11px] font-bold items-center md:items-start">
+              <button onClick={() => navigateTo('home')} className="hover:opacity-40 transition-opacity uppercase">Home</button>
+              <button onClick={() => navigateTo('publicidade')} className="hover:opacity-40 transition-opacity uppercase">Publicidade</button>
+              <button onClick={() => navigateTo('videoclipe')} className="hover:opacity-40 transition-opacity uppercase">Videoclipe</button>
+              <button onClick={() => navigateTo('contact')} className="hover:opacity-40 transition-opacity uppercase">Contato</button>
             </div>
           </div>
 
           {/* Contact */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 items-center md:items-start">
             <span className="text-[10px] font-bold opacity-40 uppercase">[CONTATO]</span>
-            <div className="flex flex-col gap-2 text-[11px] font-bold">
+            <div className="flex flex-col gap-2 text-[11px] font-bold items-center md:items-start">
               <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">PRODUTORA@PANOPTICOFILMES.COM</span>
-              <span className="hover:opacity-40 transition-opacity cursor-pointer uppercase">+55 (21) 99016-6606</span>
+              <a 
+                href="https://wa.me/5521990166606" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-40 transition-opacity cursor-pointer uppercase"
+              >
+                WHATSAPP
+              </a>
             </div>
           </div>
 
           {/* Address */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 items-center md:items-start">
             <span className="text-[10px] font-bold opacity-40 uppercase">[LOCAL]</span>
-            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
+            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase items-center md:items-start">
               <span>Rio de Janeiro</span>
             </div>
           </div>
 
           {/* Social */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 items-center md:items-end">
             <span className="text-[10px] font-bold opacity-40 uppercase">[SOCIAL]</span>
-            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase">
+            <div className="flex flex-col gap-2 text-[11px] font-bold uppercase items-center md:items-end md:text-right">
               <a href="https://www.instagram.com/PANOPTICO.FILMES" target="_blank" rel="noopener noreferrer" className="hover:opacity-40 transition-opacity cursor-pointer">Instagram</a>
               <a href="https://vimeo.com/panopticofilmes" target="_blank" rel="noopener noreferrer" className="hover:opacity-40 transition-opacity cursor-pointer">Vimeo</a>
+              <a href="https://wa.me/5521990166606" target="_blank" rel="noopener noreferrer" className="hover:opacity-40 transition-opacity cursor-pointer">Whatsapp</a>
             </div>
           </div>
         </div>
 
         {/* Legal Footer */}
-        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="text-[9px] opacity-40 font-bold tracking-widest uppercase">
-            © PANOPTICO - Todos os direitos reservados a Panoptico Filmes LTDA | CNPJ: 48.896.739/0001-50
+        <div className="pt-8 border-t border-[var(--border)] flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-[9px] opacity-40 font-bold tracking-widest uppercase text-center md:text-left">
+            © PANOPTICO - Todos os direitos reservados a Panoptico Filmes LTDA | CNPJ: 48.896.739/0001-50 | NXSCOMPANY
           </div>
           <div className="text-[11px] font-bold uppercase opacity-80">
             Rio de Janeiro: {time.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
