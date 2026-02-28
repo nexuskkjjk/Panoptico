@@ -316,16 +316,8 @@ export default function App() {
       const targetPage = validPages.includes(hash) ? hash : 'home';
       
       if (targetPage !== currentPage) {
-        // Trigger "reload" effect
-        setLoading(true);
         setCurrentPage(targetPage);
         window.scrollTo(0, 0);
-        
-        // Shorter loading for navigation
-        const timer = setTimeout(() => {
-          setLoading(false);
-        }, 1200);
-        return () => clearTimeout(timer);
       }
     };
 
