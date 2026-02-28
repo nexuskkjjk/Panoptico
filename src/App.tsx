@@ -279,6 +279,12 @@ const projects: Array<{
     vimeoHash: "3189a7bcff",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/S4Q5HYzp/Still-2026-02-24-215813-1-1-6.png",
+      "https://i.ibb.co/LXzNrjXv/Still-2026-02-24-215813-1-1-7.png",
+      "https://i.ibb.co/pvqTNnjX/Still-2026-02-24-215813-1-1-9.png",
+      "https://i.ibb.co/kgnmhwNY/Still-2026-02-24-215813-1-1-2.png"
+    ]
   },
   {
     id: "p12",
@@ -288,6 +294,12 @@ const projects: Array<{
     vimeoHash: "045fa16b88",
     thumbnail: "",
     description: "",
+    gallery: [
+      "https://i.ibb.co/7cNBcDP/Still-2026-02-24-215813-1-1-8.png",
+      "https://i.ibb.co/Y4wXQ0X8/Still-2026-02-24-215813-1-1-10.png",
+      "https://i.ibb.co/LDsL78YZ/Still-2026-02-24-215813-1-1-11.png",
+      "https://i.ibb.co/s9XsWM7H/Still-2026-02-24-215813-1-1-3.png"
+    ]
   },
 ];
 
