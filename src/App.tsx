@@ -24,7 +24,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1041871186",
     vimeoHash: "f449db2df9",
-    thumbnail: "https://i.vimeocdn.com/video/2124668721-caff6e5a830a5c6a0fe35fada2f292db53b20aa3b2e0a608c3bb68c4199cf7fb-d_1280",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/TFKLs3k/Still-2024-12-18-121501-1-90-1.png",
@@ -39,7 +39,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "956764521",
     vimeoHash: "9d854fdf6e",
-    thumbnail: "https://i.vimeocdn.com/video/1868507147-dae8263559cadec8dfafe21118c9e48111e53a26df538ca319d92e3e94eae1dc-d_1280",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/FbphV7c0/Timeline-v2-00-00-46-06-Still080.png",
@@ -54,7 +54,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1166865336",
     vimeoHash: "efd39deff7",
-    thumbnail: "https://i.vimeocdn.com/video/2124645872-c8a0385984eb6ae676b22d612a77dc1fa96ce2db268714bbeb09a04607f43413-d_1280",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/99Mvkj1v/Still-2025-09-17-132659-1-10-1.png",
@@ -69,7 +69,7 @@ const projects: Array<{
     category: "FASHION FILM",
     vimeoId: "954207533",
     vimeoHash: "4801644608",
-    thumbnail: "https://i.vimeocdn.com/video/2124667495-60fa293b14182b77b884ec1379f2b9930861b7f74d64f2dc558f4628ef56ca19-d_1280",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/ZzZHJK9Y/V-deo-Mescla-HORIZ-00-00-20-12-Still008.png",
@@ -83,7 +83,7 @@ const projects: Array<{
     title: "L7NNON — OUTRO LUGAR",
     category: "VIDEOCLIPE",
     vimeoId: "675329933",
-    thumbnail: "https://i.ibb.co/C3SKtCtb/Screenshot-37.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/C3SKtCtb/Screenshot-37.png",
@@ -98,7 +98,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1167841743",
     vimeoHash: "985ea1d650",
-    thumbnail: "https://i.ibb.co/d4gcrhm9/Still-2026-02-23-114813-2-26-1.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/d4gcrhm9/Still-2026-02-23-114813-2-26-1.png",
@@ -113,7 +113,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1166877883",
     vimeoHash: "fa9bba8ff9",
-    thumbnail: "https://i.ibb.co/BKgr0VBn/Still-2025-06-18-145719-3-52-1.jpg",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/BKgr0VBn/Still-2025-06-18-145719-3-52-1.jpg",
@@ -128,7 +128,7 @@ const projects: Array<{
     category: "VISUALIZER",
     vimeoId: "1166779536",
     vimeoHash: "344fc89908",
-    thumbnail: "https://i.ibb.co/hx9ySvkJ/Still-2025-10-13-175722-1-1-2-16-1-2.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/hx9ySvkJ/Still-2025-10-13-175722-1-1-2-16-1-2.png",
@@ -143,7 +143,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "503641665",
     vimeoHash: "ebe547a74b",
-    thumbnail: "https://i.ibb.co/Gvg6LcHR/Sequence-01-00-03-25-00-Still018.jpg",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/Gvg6LcHR/Sequence-01-00-03-25-00-Still018.jpg",
@@ -158,7 +158,7 @@ const projects: Array<{
     category: "VISUALIZER",
     vimeoId: "1166793032",
     vimeoHash: "7d05654e07",
-    thumbnail: "https://i.ibb.co/y3KfhxL/Still-2026-01-04-123250-1-27-1.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/y3KfhxL/Still-2026-01-04-123250-1-27-1.png",
@@ -173,7 +173,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "676467610",
     vimeoHash: "17925b4d69",
-    thumbnail: "https://i.ibb.co/VYYWq7y2/Main-TL-00-00-11-04-Still003.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/VYYWq7y2/Main-TL-00-00-11-04-Still003.png",
@@ -188,7 +188,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "1167850997",
     vimeoHash: "e91af12e3a",
-    thumbnail: "https://i.ibb.co/p681Xnpt/Outra-Hora-30-1-14.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/p681Xnpt/Outra-Hora-30-1-14.png",
@@ -203,7 +203,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "821890935",
     vimeoHash: "cc62328569",
-    thumbnail: "https://i.ibb.co/ycFJrwBC/Main-TL-FInal-v2-x1634-00-01-51-15-Still039.jpg",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/ycFJrwBC/Main-TL-FInal-v2-x1634-00-01-51-15-Still039.jpg",
@@ -218,7 +218,7 @@ const projects: Array<{
     category: "VIDEOCLIPE",
     vimeoId: "748221186",
     vimeoHash: "26726dd11c",
-    thumbnail: "https://i.ibb.co/P8mpKgW/Screenshot-43.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/P8mpKgW/Screenshot-43.png",
@@ -232,7 +232,7 @@ const projects: Array<{
     title: "SANXA — A MENTE MESTRA",
     category: "VIDEOCLIPE",
     vimeoId: "954215639",
-    thumbnail: "https://i.ibb.co/qLwskwHg/Main-TL5-00-00-44-14-Still012.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/qLwskwHg/Main-TL5-00-00-44-14-Still012.png",
@@ -247,7 +247,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1166880173",
     vimeoHash: "c3c23b60ba",
-    thumbnail: "https://i.ibb.co/x8RpbH6X/still-1-15-2.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/x8RpbH6X/still-1-15-2.png",
@@ -262,7 +262,7 @@ const projects: Array<{
     category: "FASHION FILM",
     vimeoId: "1166870300",
     vimeoHash: "3aae8bfa69",
-    thumbnail: "https://i.ibb.co/GvKP5G4v/V-deos-v2-00-01-45-13-Still072.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/GvKP5G4v/V-deos-v2-00-01-45-13-Still072.png",
@@ -277,7 +277,7 @@ const projects: Array<{
     category: "PUBLICIDADE",
     vimeoId: "1166868756",
     vimeoHash: "3189a7bcff",
-    thumbnail: "https://i.ibb.co/S4Q5HYzp/Still-2026-02-24-215813-1-1-6.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/S4Q5HYzp/Still-2026-02-24-215813-1-1-6.png",
@@ -292,7 +292,7 @@ const projects: Array<{
     category: "FASHION FILM",
     vimeoId: "457119275",
     vimeoHash: "045fa16b88",
-    thumbnail: "https://i.ibb.co/7cNBcDP/Still-2026-02-24-215813-1-1-8.png",
+    thumbnail: "",
     description: "",
     gallery: [
       "https://i.ibb.co/7cNBcDP/Still-2026-02-24-215813-1-1-8.png",
