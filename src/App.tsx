@@ -524,7 +524,7 @@ export default function App() {
                 </div>
               )}
             </div>
-            <div className="mt-4 flex justify-end">
+            <div className="mt-4 flex justify-start md:justify-end">
               <motion.h2 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -839,18 +839,12 @@ export default function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="pointer-events-auto cursor-pointer flex items-center gap-3"
+            className="pointer-events-auto cursor-pointer flex flex-col gap-0.5"
             onClick={() => {
               navigateTo('home');
               setIsMobileMenuOpen(false);
             }}
           >
-            <img 
-              src="https://i.ibb.co/R47dfnNV/Untitled-design.png" 
-              alt="Logo" 
-              className="w-6 h-6 md:w-8 md:h-8 object-contain grayscale"
-              referrerPolicy="no-referrer"
-            />
             <span className="opacity-90 tracking-widest font-bold text-[14px] md:text-[11px]">PANOPTICO FILMES</span>
           </motion.div>
 
