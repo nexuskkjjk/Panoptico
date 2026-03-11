@@ -322,24 +322,41 @@ export default function App() {
   };
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as any;
-      const validPages = ['home', 'publicidade', 'videoclipe', 'contact'];
-      const targetPage = validPages.includes(hash) ? hash : 'home';
-      
-      if (targetPage !== currentPage) {
-        setCurrentPage(targetPage);
-        window.scrollTo(0, 0);
-      }
-    };
+      const handleHashChange = () => {
+        const hash = window.location.hash.replace('#', '');
+        
+        if (hash.startsWith('project/')) {
+          const projectId = hash.split('/')[1];
+          const project = projects.find(p => p.id === projectId);
+          if (project) {
+            setSelectedProject(project);
+            return;
+          }
+        }
+
+        setSelectedProject(null);
+        const validPages = ['home', 'publicidade', 'videoclipe', 'contact'];
+        const targetPage = validPages.includes(hash as any) ? (hash as any) : 'home';
+        
+        if (targetPage !== currentPage) {
+          setCurrentPage(targetPage);
+          window.scrollTo(0, 0);
+        }
+      };
 
     window.addEventListener('hashchange', handleHashChange);
     
     // Handle initial load from hash
     if (isInitialLoad) {
-      const hash = window.location.hash.replace('#', '') as any;
-      if (hash && ['home', 'publicidade', 'videoclipe', 'contact'].includes(hash)) {
-        setCurrentPage(hash);
+      const hash = window.location.hash.replace('#', '');
+      if (hash.startsWith('project/')) {
+        const projectId = hash.split('/')[1];
+        const project = projects.find(p => p.id === projectId);
+        if (project) {
+          setSelectedProject(project);
+        }
+      } else if (hash && ['home', 'publicidade', 'videoclipe', 'contact'].includes(hash)) {
+        setCurrentPage(hash as any);
       }
       setIsInitialLoad(false);
     }
@@ -481,7 +498,7 @@ export default function App() {
                   <img 
                     src={project.thumbnail || vimeoThumbnails[project.id]} 
                     alt="" 
-                    className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-[1.05]"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
@@ -495,7 +512,7 @@ export default function App() {
                       src={`https://player.vimeo.com/video/${project.vimeoId}?h=${project.vimeoHash || ''}&autoplay=1&title=0&byline=0&portrait=0`}
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
-                      className="absolute top-0 left-0 w-full h-full scale-[1.08]"
+                      className="absolute top-0 left-0 w-full h-full"
                       title={project.title}
                       loading="lazy"
                     ></iframe>
@@ -507,7 +524,7 @@ export default function App() {
                     <video
                       autoPlay
                       controls
-                      className="w-full h-full object-cover scale-[1.08]"
+                      className="w-full h-full object-cover"
                     >
                       <source src={project.video} type="video/mp4" />
                     </video>
@@ -531,7 +548,7 @@ export default function App() {
                 viewport={{ once: true }}
                 transition={{ duration: 1.2 }}
                 className="font-sans tracking-tighter opacity-90 text-[11px] cursor-pointer hover:opacity-40 transition-opacity font-bold uppercase"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => window.location.hash = `project/${project.id}`}
               >
                 {project.title}
               </motion.h2>
@@ -568,13 +585,13 @@ export default function App() {
             >
               <div 
                 className="relative aspect-video overflow-hidden bg-neutral-50 rounded-none cursor-pointer"
-                onClick={() => setSelectedProject(project)}
+                onClick={() => window.location.hash = `project/${project.id}`}
               >
                 {(project.thumbnail || vimeoThumbnails[project.id]) && (
                   <img 
                     src={project.thumbnail || vimeoThumbnails[project.id]} 
                     alt="" 
-                    className="absolute inset-0 w-full h-full object-cover scale-[1.08] transition-transform duration-1000 ease-in-out group-hover:scale-[1.12]"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-in-out group-hover:scale-[1.05]"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                   />
@@ -999,7 +1016,7 @@ export default function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[110] bg-[var(--bg)] flex items-center justify-center overflow-hidden"
-            onClick={() => setSelectedProject(null)}
+            onClick={() => window.history.back()}
           >
             <motion.div
               initial={{ y: 40, opacity: 0 }}
@@ -1015,7 +1032,7 @@ export default function App() {
                   <h2 className="text-[16px] md:text-[20px] font-bold tracking-tighter uppercase">{selectedProject.title}</h2>
                 </div>
                 <button 
-                  onClick={() => setSelectedProject(null)}
+                  onClick={() => window.history.back()}
                   className="text-[10px] opacity-40 hover:opacity-100 transition-opacity tracking-[0.2em] font-bold border border-[var(--border)] px-4 py-2 hover:bg-[var(--text)] hover:text-[var(--bg)]"
                 >
                   VOLTAR / CLOSE
@@ -1033,7 +1050,7 @@ export default function App() {
                   >
                     <iframe
                       src={`https://player.vimeo.com/video/${selectedProject.vimeoId}?h=${selectedProject.vimeoHash}&autoplay=1&title=0&byline=0&portrait=0`}
-                      className="w-full h-full scale-[1.08]"
+                      className="w-full h-full"
                       frameBorder="0"
                       allow="autoplay; fullscreen; picture-in-picture"
                       allowFullScreen
@@ -1055,7 +1072,7 @@ export default function App() {
                           <img
                             src={img}
                             alt={`${selectedProject.title} still ${idx + 1}`}
-                            className="w-full aspect-[16/9] object-cover scale-[1.08] grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-500 ease-in-out hover:scale-[1.12] active:scale-[1.12]"
+                            className="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-500 ease-in-out hover:scale-[1.05] active:scale-[1.05]"
                             referrerPolicy="no-referrer"
                             loading="lazy"
                           />
